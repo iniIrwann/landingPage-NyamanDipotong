@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nyaman Dipotong</title>
+    <link
+      rel="icon"
+      href="asset/logo/logo-pavi.png"
+      class="w-auto"
+      type="image/png"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+    * {
+      font-family: "Montserrat", sans-serif;
+    }
+  </style>
+  <body class="relative text-white overflow-x-hidden bg-gray-100 text-gray-800">
+    <div
+      class="absolute inset-0 -z-10 bg-cover bg-no-repeat"
+      style="background-image: url('asset/MainBackground.webp')"
+    ></div>
+    <!-- Hero Section + Navbar -->
+    <section
+      class="relative md:h-screen h-[225px] flex items-center md:border-b-8 md:border-[#664204] justify-center"
+    >
+      <!-- Background Image -->
+      <img
+        src="asset/Layanan/HeroImage.png"
+        alt="Background"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <!-- <div class="absolute inset-0 bg-black bg-opacity-40"></div> -->
+      <nav
+        class="absolute top-0 left-0 z-20 w-full flex items-center justify-center px-4 md:px-8 text-white"
+      >
+        <img src="asset/logo/logo.png" alt="Logo" class="md:w-20 w-10 pt-4" />
+
+        <div class="relative w-fit ml-4 md:ml-auto">
+          <img
+            src="asset/Beranda/ornamen_navbar.png"
+            alt="Ornamen Navbar"
+            class="w-full md:h-auto h-14 z-0"
+          />
+
+          <ul
+            class="absolute inset-0 flex z-10 justify-center items-center md:space-x-24 space-x-2 sm:space-x-4 text-xs md:text-base font-medium text-white"
+          >
+            <li>
+              <a href="index.html" class="hover:text-[#B57D40]">Beranda</a>
+            </li>
+            <li>
+              <a href="tentang.html" class="hover:text-[#B57D40]">Tentang</a>
+            </li>
+            <li>
+              <a
+                href="#layanan_kami"
+                class="text-[#B57D40] hover:text-[#B57D40]"
+                >Layanan Kami</a
+              >
+            </li>
+            <li>
+              <a href="kontak.html" class="hover:text-[#B57D40]">Kontak</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </section>
+
+    <!-- Visi & Misi Section -->
+    <section id="layanan_kami" class="relative text-white">
+      <div class="relative">
+        <!-- Ornamen Kiri -->
+        <img
+          src="asset/Tentang/output-onlinegiftools.gif"
+          alt="Spiral Kiri"
+          class="absolute md:top-6 md:left-6 top-3 left-0 md:h-40 h-20"
+        />
+        <!-- Jasa Kami -->
+        <div
+          class="relative flex flex-row items-center justify-center px-20 md:pt-12 md:pb-6 pt-12 gap-x-6"
+        >
+          <div
+            class="relative justify-center items-center md:ms-10 text-center flex flex-col"
+          >
+            <span class="text-2xl md:text-3xl font-bold mb-4">Jasa Kami</span>
+            <div
+              class="relative justify-center items-center text-center flex flex-col"
+            >
+              <div class="flex justify-center items-center gap-x-6 md:gap-x-12">
+                <img
+                  src="asset/Layanan/TombolKiri.png"
+                  draggable="false"
+                  onclick="prevJasa()"
+                  class="w-10"
+                  alt=""
+                />
+                <img
+                  id="fotoJasa"
+                  src="asset/Layanan/JasaKami/FotoJasaKami/catrambut.png"
+                  class="w-64 transition-opacity duration-500"
+                  onclick="openModal(this.src)"
+                  alt=""
+                  style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+                />
+                <img
+                  src="asset/Layanan/TombolKanan.png"
+                  draggable="false"
+                  onclick="nextJasa()"
+                  class="w-10"
+                  alt=""
+                />
+              </div>
+            </div>
+            <img
+              id="hargaJasa"
+              src="asset/Layanan/JasaKami/HargaJasaKami/hargacatrambut.png"
+              alt=""
+              class="md:w-52 w-40 mt-4 transition-opacity duration-500"
+              draggable="false"
+            />
+          </div>
+          <div
+            class="relative hidden md:block w-full max-w-xl mx-auto text-white min-h-[250px]"
+          >
+            <!-- SVG Background -->
+            <img
+              src="asset/Layanan/ornamen_putih.svg"
+              alt="Ornamen Deskripsi"
+              class="absolute inset-0 w-full h-full object-fill z-0"
+            />
+
+            <!-- Teks -->
+            <div
+              class="absolute z-10 px-6 text-sm leading-relaxed flex items-center justify-center h-full"
+            >
+              <p id="deskripsiJasa" class="text-center">
+                Ubah gaya, tampil lebih segar! Pilihan warna trendy dan proses
+                pengecatan profesional untuk hasil yang merata dan tahan lama.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Ornamen Mobile Screen -->
+        <div
+          class="relative md:hidden w-full max-w-xl mx-auto text-white min-h-[250px]"
+        >
+          <!-- SVG Background -->
+          <img
+            src="asset/Layanan/ornamen_putih.svg"
+            alt="Ornamen Deskripsi"
+            class="absolute inset-0 w-full h-full object-fill z-0"
+          />
+
+          <!-- Teks -->
+          <div
+            class="absolute z-10 px-6 text-sm leading-relaxed flex items-center justify-center h-full"
+          >
+            <p id="deskripsiJasaMobile" class="text-center">
+              Ubah gaya, tampil lebih segar! Pilihan warna trendy dan proses
+              pengecatan profesional untuk hasil yang merata dan tahan lama.
+            </p>
+          </div>
+        </div>
+        <!-- Produk Kami -->
+        <div
+          class="relative flex flex-row items-center justify-center px-20 md:pt-0 md:pb-12 pt-10 gap-x-6"
+        >
+          <!-- Ornamen + teks -->
+          <div
+            class="relative hidden md:block w-full max-w-xl mx-auto text-white min-h-[250px]"
+          >
+            <img
+              src="asset/Layanan/ornamen_putih.svg"
+              alt="Ornamen Deskripsi"
+              class="absolute inset-0 w-full h-full object-fill z-0"
+            />
+
+            <div
+              class="absolute z-10 px-12 text-sm leading-relaxed flex items-center justify-center h-full"
+            >
+              <p id="deskripsiProduct" class="text-center">
+                BSY Noni Black Hair Magic adalah sampo pewarna rambut instan
+                yang terbuat dari ekstrak buah mengkudu (noni) dan bahan herbal
+                pilihan. Membantu menghitamkan rambut secara cepat tanpa
+                merusak, sekaligus menutrisi dan menjaga kesehatan kulit kepala.
+                Praktis digunakan di rumah, tanpa perlu ke salon.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="relative justify-center items-center text-center flex flex-col"
+          >
+            <span class="text-2xl md:text-3xl font-bold mb-4">Produk Kami</span>
+            <div
+              class="relative justify-center items-center text-center flex flex-col"
+            >
+              <div class="flex justify-center items-center gap-x-6 md:gap-x-12">
+                <img
+                  onclick="prevProduct()"
+                  src="asset/Layanan/TombolKiri.png"
+                  draggable="false"
+                  class="w-10"
+                  alt=""
+                />
+                <img
+                  id="fotoProduct"
+                  src="asset/Layanan/ProdukKami/FotoProdukKami/BSY.png"
+                  class="w-64 transition-opacity duration-500"
+                  alt=""
+                  onclick="openModal(this.src)"
+                  style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+                />
+                <img
+                  onclick="nextProduct()"
+                  src="asset/Layanan/TombolKanan.png"
+                  draggable="false"
+                  class="w-10"
+                  alt=""
+                />
+              </div>
+            </div>
+            <img
+              id="hargaProduct"
+              src="asset/Layanan/ProdukKami/HargaProdukKami/BSY.png"
+              alt=""
+              class="md:w-52 w-40 mt-4 transition-opacity duration-500"
+              draggable="false"
+            />
+          </div>
+        </div>
+        <!-- Ornamen Mobile Screen -->
+        <div
+          class="relative md:hidden w-full max-w-xl mx-auto text-white min-h-[300px]"
+        >
+          <!-- SVG Background -->
+          <img
+            src="asset/Layanan/ornamen_putih.svg"
+            alt="Ornamen Deskripsi"
+            class="absolute inset-0 w-full h-full object-fill z-0"
+          />
+
+          <!-- Teks Mobile Screen -->
+          <div
+            class="absolute z-10 px-6 text-sm leading-relaxed flex items-center justify-center h-full"
+          >
+            <p id="deskripsiProductMobile" class="text-center">
+              BSY Noni Black Hair Magic adalah sampo pewarna rambut instan yang
+              terbuat dari ekstrak buah mengkudu (noni) dan bahan herbal
+              pilihan. Membantu menghitamkan rambut secara cepat tanpa merusak,
+              sekaligus menutrisi dan menjaga kesehatan kulit kepala. Praktis
+              digunakan di rumah, tanpa perlu ke salon.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Galeri -->
+    <section
+      class="text-white flex flex-col justify-center items-center mt-4 mb-12"
+    >
+      <h1 class="text-center text-2xl md:text-3xl font-bold">Galeri</h1>
+
+      <div
+        class="grid md:grid-cols-3 grid-cols-2 gap-y-8 px-4 py-4 pb-8 w-full max-w-6xl"
+      >
+        <img
+          src="asset/Layanan/Galeri/galeri1.png"
+          alt=""
+          onclick="openModal(this.src)"
+          class="w-64 md:hidden h-auto object-cover shadow-xl rounded-md md:mr-12"
+          style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+        />
+        <img
+          src="asset/Layanan/Galeri/galeri4.png"
+          alt=""
+          onclick="openModal(this.src)"
+          class="w-64 md:hidden h-auto object-cover shadow-xl rounded-md"
+          style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+        />
+        <img
+          src="asset/Layanan/Galeri/galeri5.png"
+          alt=""
+          onclick="openModal(this.src)"
+          class="w-64 md:hidden h-auto object-cover shadow-xl rounded-md md:mx-auto"
+          style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+        />
+        <img
+          src="asset/Layanan/Galeri/galeri3.png"
+          alt=""
+          onclick="openModal(this.src)"
+          class="w-64 md:hidden h-auto object-cover shadow-xl rounded-md md:ml-12"
+          style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+        />
+        <img
+          src="asset/Layanan/Galeri/galeri2.png"
+          alt=""
+          onclick="openModal(this.src)"
+          class="w-64 md:hidden h-auto object-cover shadow-xl rounded-md"
+          style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+        />
+        <!-- Kiri -->
+        <div
+          class="md:flex hidden flex-row md:flex-col gap-y-20 items-end pr-6"
+        >
+          <img
+            src="asset/Layanan/Galeri/galeri1.png"
+            alt=""
+            onclick="openModal(this.src)"
+            class="w-64 h-auto object-cover shadow-xl rounded-md md:mr-12"
+            style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+          />
+          <img
+            src="asset/Layanan/Galeri/galeri4.png"
+            alt=""
+            onclick="openModal(this.src)"
+            class="w-64 h-auto object-cover shadow-xl rounded-md"
+            style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+          />
+        </div>
+
+        <!-- Tengah -->
+        <div class="md:flex hidden justify-center items-center">
+          <img
+            src="asset/Layanan/Galeri/galeri5.png"
+            alt=""
+            onclick="openModal(this.src)"
+            class="w-64 h-auto object-cover shadow-xl rounded-md md:mx-auto"
+            style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+          />
+        </div>
+
+        <!-- Kanan -->
+        <div class="md:flex hidden flex-col gap-y-20 items-start md:pl-6">
+          <img
+            src="asset/Layanan/Galeri/galeri3.png"
+            alt=""
+            onclick="openModal(this.src)"
+            class="w-64 h-auto object-cover shadow-xl rounded-md md:ml-12"
+            style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+          />
+          <img
+            src="asset/Layanan/Galeri/galeri2.png"
+            alt=""
+            onclick="openModal(this.src)"
+            class="w-64 h-auto object-cover shadow-xl rounded-md"
+            style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      style="
+        background-image: url(asset/footer.png);
+        background-repeat: no-repeat;
+        object-fit: cover;
+        background-size: 100% 100%;
+      "
+      class="text-white py-2 relative"
+    >
+      <div
+        class="absolute md:top-0 md:left-0 flex flex-col px-3 md:py-2 py-1 justify-center items-start"
+      >
+        <h1 class="font-semibold text-sm md:text-lg">Mari Terhubung</h1>
+        <div class="flex space-x-3 mt-2">
+          <a href="https://wa.me/6285259029299">
+            <img
+              src="asset/Icon/wa.png"
+              class="w-6 md:w-12 hover:scale-105 transition-transform duration-300"
+              alt="Whatsapp"
+              draggable="false"
+            />
+          </a>
+          <a href="https://www.instagram.com/nyamandipotong">
+            <img
+              src="asset/Icon/ig.png"
+              class="w-6 md:w-12 hover:scale-105 transition-transform duration-300"
+              alt="Instagram"
+              draggable="false"
+            />
+          </a>
+        </div>
+      </div>
+
+      <!-- Tengah -->
+      <div class="justify-center flex mt-3 mb-6 md:my-0">
+        <a href="index.html">
+          <img
+            src="asset/logo/logo_footer.png"
+            class="w-14 md:w-32"
+            alt="Logo Tengah"
+            draggable="false"
+          />
+        </a>
+      </div>
+
+      <!-- Kanan -->
+      <div
+        class="absolute right-0 bottom-0 flex px-3 mt-2 py-2 flex-col text-right text-[10px] md:text-sm"
+      >
+        <p>© Copyright 2025. All rights reserved.</p>
+        <p class="mt-1">Designed by Hatim</p>
+      </div>
+    </footer>
+
+    <script>
+      const jasaList = [
+        {
+          foto: "asset/Layanan/JasaKami/FotoJasaKami/catrambut.png",
+          harga: "asset/Layanan/JasaKami/HargaJasaKami/hargacatrambut.png",
+          deskripsi:
+            "Ubah gaya, tampil lebih segar! Pilihan warna trendy dan proses pengecatan profesional untuk hasil yang merata dan tahan lama.",
+        },
+        {
+          foto: "asset/Layanan/JasaKami/FotoJasaKami/cukurjenggot.png",
+          harga: "asset/Layanan/JasaKami/HargaJasaKami/hargacukurjenggot.png",
+          deskripsi:
+            "Tampil rapi dan maskulin dengan potongan kumis dan jenggot yang presisi. Dirapikan dengan detail, memberikan bentuk yang sesuai dengan karakter wajah Anda.",
+        },
+        {
+          foto: "asset/Layanan/JasaKami/FotoJasaKami/pijat.png",
+          harga: "asset/Layanan/JasaKami/HargaJasaKami/hargapijat.png",
+          deskripsi:
+            "Lepaskan penat dengan pijatan lembut di area kepala dan leher. Membantu melancarkan peredaran darah dan membuat tubuh kembali segar.",
+        },
+        {
+          foto: "asset/Layanan/JasaKami/FotoJasaKami/nyamandipotong.png",
+          harga: "asset/Layanan/JasaKami/HargaJasaKami/harganyamanpotong.png",
+          deskripsi:
+            "Nikmati pengalaman grooming lengkap: potong dan cukup rapi, handuk hangat yang menenangkan, keramas menyegarkan, hingga pijat ringan yang membuat rileks semua dirancang untuk kenyamanan maksimal dan tampilan terbaik Anda.",
+        },
+        {
+          foto: "asset/Layanan/JasaKami/FotoJasaKami/nyamandipotonglengkap.png",
+          harga: "asset/Layanan/JasaKami/HargaJasaKami/hargalengkap.png",
+          deskripsi:
+            "Dari potong dan cukur rambut, handuk hangat yang menenangkan, keramas menyegarkan, hingga pijat kepala & leher yang bikin rileks. Ditambah potong kumis dan jenggot untuk tampilan yang makin rapi dan maskulin. ",
+        },
+      ];
+
+      let currentIndex = 0;
+
+      function tampilkanJasa(index) {
+        const foto = document.getElementById("fotoJasa");
+        const harga = document.getElementById("hargaJasa");
+        const deskripsi = document.getElementById("deskripsiJasa");
+        const deskripsiJasaMobile = document.getElementById(
+          "deskripsiJasaMobile"
+        );
+
+        // Step 1: Fade out
+        foto.classList.add("opacity-0");
+        harga.classList.add("opacity-0");
+        deskripsi.classList.add("opacity-0");
+        deskripsiJasaMobile.classList.add("opacity-0");
+
+        // Step 2: Tunggu transisi lalu ganti konten
+        setTimeout(() => {
+          foto.src = jasaList[index].foto;
+          harga.src = jasaList[index].harga;
+          deskripsi.innerHTML = jasaList[index].deskripsi;
+          deskripsiJasaMobile.innerHTML = jasaList[index].deskripsi;
+
+          // Step 3: Fade in
+          foto.classList.remove("opacity-0");
+          harga.classList.remove("opacity-0");
+          deskripsi.classList.remove("opacity-0");
+          deskripsiJasaMobile.classList.remove("opacity-0");
+        }, 200); // Waktu delay lebih kecil dari `duration-500`
+      }
+
+      function nextJasa() {
+        currentIndex = (currentIndex + 1) % jasaList.length;
+        tampilkanJasa(currentIndex);
+      }
+
+      function prevJasa() {
+        currentIndex = (currentIndex - 1 + jasaList.length) % jasaList.length;
+        tampilkanJasa(currentIndex);
+      }
+      const productList = [
+        {
+          foto: "asset/Layanan/ProdukKami/FotoProdukKami/BSY.png",
+          harga: "asset/Layanan/ProdukKami/HargaProdukKami/BSY.png",
+          deskripsi:
+            " BSY Noni Black Hair Magic adalah sampo pewarna rambut instan yang terbuat dari ekstrak buah mengkudu (noni) dan bahan herbal pilihan. Membantu menghitamkan rambut secara cepat tanpa merusak, sekaligus menutrisi dan menjaga kesehatan kulit kepala. Praktis digunakan di rumah, tanpa perlu ke salon.",
+        },
+        {
+          foto: "asset/Layanan/ProdukKami/FotoProdukKami/Cartelde.png",
+          harga: "asset/Layanan/ProdukKami/HargaProdukKami/Cartelde.png",
+          deskripsi:
+            " (Oil Based Pomade) <br>  Memiliki tekstur yang tidak terlalu lengket, memiliki daya tahan lama, mengandung vitamin E dan Olive Oil. Disarankan untuk rambut yang kering.",
+        },
+        {
+          foto: "asset/Layanan/ProdukKami/FotoProdukKami/ElMejor.png",
+          harga: "asset/Layanan/ProdukKami/HargaProdukKami/ElMejor.png",
+          deskripsi:
+            " (Claybased pomade) <br> membuat tekstur rambut lebih matte, bikin rambut bervolume dengan hold yang kuat, menyerap keringat.",
+        },
+        {
+          foto: "asset/Layanan/ProdukKami/FotoProdukKami/ElNuevo.png",
+          harga: "asset/Layanan/ProdukKami/HargaProdukKami/ElNuevo.png",
+          deskripsi:
+            " (Water Based Pomade) <br> Mudah dibilas, fleksibel untuk tampilan modern atau klasik, teksturnya tidak lengket, cocok dipakai sehari-hari, serta, mengandung Vitamin E.",
+        },
+        {
+          foto: "asset/Layanan/ProdukKami/FotoProdukKami/Nolabel.png",
+          harga: "asset/Layanan/ProdukKami/HargaProdukKami/Nolabel.png",
+          deskripsi:
+            " (Water Based) <br> Memiliki Tekstur lebih ringan sehingga mudah diaplikasikan pada rambut, dan mampu memberikan tampilan yang lebih alami tanpa terkesan berat atau berminyak.",
+        },
+      ];
+
+      let currentIndex2 = 0;
+
+      function tampilkanProduct(index) {
+        const foto = document.getElementById("fotoProduct");
+        const harga = document.getElementById("hargaProduct");
+        const deskripsi = document.getElementById("deskripsiProduct");
+        const deskripsiMobile = document.getElementById(
+          "deskripsiProductMobile"
+        );
+
+        // Step 1: Fade out
+        foto.classList.add("opacity-0");
+        harga.classList.add("opacity-0");
+        deskripsi.classList.add("opacity-0");
+        deskripsiMobile.classList.add("opacity-0");
+
+        // Step 2: Tunggu transisi lalu ganti konten
+        setTimeout(() => {
+          foto.src = productList[index].foto;
+          harga.src = productList[index].harga;
+          deskripsi.innerHTML = productList[index].deskripsi;
+          deskripsiMobile.innerHTML = productList[index].deskripsi;
+
+          // Step 3: Fade in
+          foto.classList.remove("opacity-0");
+          harga.classList.remove("opacity-0");
+          deskripsi.classList.remove("opacity-0");
+          deskripsiMobile.classList.remove("opacity-0");
+        }, 200); // Waktu delay lebih kecil dari `duration-500`
+      }
+
+      function nextProduct() {
+        currentIndex2 = (currentIndex2 + 1) % productList.length;
+        tampilkanProduct(currentIndex2);
+      }
+
+      function prevProduct() {
+        currentIndex2 =
+          (currentIndex2 - 1 + productList.length) % productList.length;
+        tampilkanProduct(currentIndex2);
+      }
+    </script>
+    <script>
+      function openModal(src) {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+
+        modalImg.src = src;
+        modal.classList.remove("hidden");
+
+        // Pakai timeout agar animasi bisa jalan
+        setTimeout(() => {
+          modalImg.classList.remove("scale-90", "opacity-0");
+          modalImg.classList.add("scale-100", "opacity-100");
+        }, 10);
+
+        // Matikan scroll body
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+
+        // Balik ke animasi awal
+        modalImg.classList.remove("scale-100", "opacity-100");
+        modalImg.classList.add("scale-90", "opacity-0");
+
+        // Tunggu animasi selesai baru sembunyikan modal
+        setTimeout(() => {
+          modal.classList.add("hidden");
+          document.body.style.overflow = ""; // Aktifkan scroll lagi
+        }, 300);
+      }
+    </script>
+  </body>
+</html>
+<div
+  id="imageModal"
+  class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden"
+  onclick="closeModal()"
+>
+  <img
+    id="modalImage"
+    src=""
+    class="max-w-full max-h-full object-contain rounded-lg shadow-lg transform scale-90 opacity-0 transition duration-300"
+  />
+</div>

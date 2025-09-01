@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nyaman Dipotong</title>
+    <link
+      rel="icon"
+      href="asset/logo/logo-pavi.png"
+      class="w-auto"
+      type="image/png"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+    * {
+      font-family: "Montserrat", sans-serif;
+    }
+  </style>
+  <body class="relative text-white overflow-x-hidden bg-gray-100 text-gray-800">
+    <div
+      class="absolute inset-0 -z-10 bg-cover bg-no-repeat"
+      style="background-image: url('asset/MainBackground.webp')"
+    ></div>
+    <!-- Audio -->
+    <audio id="lagu" src="asset/LouisAdrien-AttheBistro.mp3"></audio>
+
+    <!-- Teks + Gambar -->
+    <div class="fixed bottom-4 right-4 z-50 flex items-center space-x-2">
+      <p
+        id="judulLagu"
+        class="text-white font-bold px-2 py-1 text-sm min-w-[10px] whitespace-nowrap"
+      ></p>
+      <p
+        id="playme"
+        class="absolute bottom-full mb-2 right-0 text-white bg-black/70 rounded px-2 py-1 text-xs"
+      >
+        🎵 Klik untuk mulai musik
+      </p>
+
+      <img
+        onclick="toggleLagu()"
+        id="gambarPiring"
+        src="asset/piring-hitam.png"
+        class="w-20 cursor-pointer"
+        alt="Piring Hitam"
+      />
+    </div>
+
+    <!-- warna nav aktif #B57D40 -->
+    <!-- Hero Section + Navbar -->
+    <section
+      class="relative md:h-screen h-[250px] flex items-center justify-center"
+    >
+      <!-- Background Image -->
+      <img
+        src="asset/Beranda/HeroImage1.webp"
+        alt="Background"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+      <!-- Navbar -->
+      <nav
+        class="absolute top-0 left-0 z-20 w-full flex items-center justify-center px-4 md:px-8 text-white"
+      >
+        <!-- Logo kiri -->
+        <img src="asset/logo/logo.png" alt="Logo" class="md:w-20 w-10 pt-4" />
+
+        <!-- Menu kanan -->
+        <div class="relative flex items-center w-fit ml-4 md:ml-auto">
+          <div class=""></div>
+          <div class="ml-12 md:ml-auto">
+            <img
+              src="asset/Beranda/ornamen_navbar.png"
+              alt="Ornamen Navbar"
+              class="w-full md:h-auto h-14 z-0"
+            />
+
+            <ul
+              class="absolute inset-0 flex z-10 justify-center items-center md:space-x-24 space-x-2 sm:space-x-4 text-xs md:text-base font-medium text-white"
+            >
+              <li>
+                <a href="#beranda" class="text-[#B57D40] hover:text-[#B57D40]"
+                  >Beranda</a
+                >
+              </li>
+              <li>
+                <a href="tentang.html" class="hover:text-[#B57D40]">Tentang</a>
+              </li>
+              <li>
+                <a href="layanan_kami.html" class="hover:text-[#B57D40]"
+                  >Layanan Kami</a
+                >
+              </li>
+              <li>
+                <a href="kontak.html" class="hover:text-[#B57D40]">Kontak</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Hero text -->
+      <div
+        class="relative z-10 flex flex-col justify-end md:justify-end items-end text-center h-full text-white px-4 py-2 md:py-6"
+      >
+        <h1 class="text-xl md:text-6xl font-extrabold mb-4">
+          Suasana yang membuatmu rindu
+        </h1>
+        <p class="text-xs md:text-[16px] max-w-4xl">
+          Tempat di mana gaya rambut bukan sekadar potongan, tapi cerminan gaya
+          hidup. Kami siap memberikan pelayanan terbaik agar Anda tampil percaya
+          diri, segar, dan penuh karakter.
+        </p>
+      </div>
+    </section>
+
+    <!-- Tentang -->
+    <section
+      id="beranda"
+      class="relative mt-5 md:mt-10 md:h-full bg-white overflow-hidden"
+    >
+      <div class="relative w-full">
+        <img
+          src="asset/Beranda/HeroImage2.webp"
+          alt="Pattern Background"
+          class="w-full md:h-auto sm:h-[60vh] h-[80vh] object-cover"
+        />
+
+        <div
+          class="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-6 py-2 md:py-10"
+        >
+          <div
+            class="relative flex md:w-[90%] md:max-w-4xl w-full justify-center"
+          >
+            <!--  Mobile: Background hijau fleksibel -->
+            <div class="md:hidden w-full rounded-xl bg-[#3f5e57] px-6 py-8">
+              <h2 class="text-2xl md:text-3xl font-bold mb-4">Tentang</h2>
+              <p class="text-sm md:text-base max-w-2xl">
+                Nyaman Dipotong adalah ruang yang memadukan nuansa vintage
+                dengan pelayanan dan fasilitas yang baik. Barbershop Nyaman
+                Dpotong membangun kapster yang sudah berpengalaman, yang tidak
+                hanya terampil, tapi juga mengedepankan rasa hormat, ketulusan,
+                dan kesederhanaan dalam setiap pelayanan. Karena bagi kami,
+                kenyamanan bukan hanya slogan, melainkan janji yang ingin kami
+                jaga.
+              </p>
+              <a
+                href="#"
+                class="mt-6 inline-block border border-white text-sm px-2 py-1 font-medium rounded-full hover:bg-white hover:text-green-900 transition"
+              >
+                Pelajari Selengkapnya
+              </a>
+            </div>
+
+            <!--  Desktop: Ornamen papan dan teks di atasnya -->
+            <div class="hidden md:block relative w-full">
+              <img
+                src="asset/Beranda/ornamen_tentang.png"
+                alt="Papan Konten"
+                class="w-full h-auto py-10 object-contain"
+              />
+              <div
+                class="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-6 py-10"
+              >
+                <h2 class="text-3xl font-bold mb-6">Tentang</h2>
+                <p class="text-[18px] max-w-2xl">
+                  Nyaman Dipotong adalah ruang yang memadukan nuansa vintage
+                  dengan pelayanan dan fasilitas yang baik. Barbershop Nyaman
+                  Dpotong membangun kapster yang sudah berpengalaman, yang tidak
+                  hanya terampil, tapi juga mengedepankan rasa hormat,
+                  ketulusan, dan kesederhanaan dalam setiap pelayanan. Karena
+                  bagi kami, kenyamanan bukan hanya slogan, melainkan janji yang
+                  ingin kami jaga.
+                </p>
+                <a
+                  href="tentang.html"
+                  class="mt-6 inline-block border border-white text-sm px-2 py-1 font-medium rounded-full hover:bg-white hover:text-green-900 transition"
+                >
+                  Pelajari Selengkapnya
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="relative text-white text-center">
+      <div class="py-8 px-4">
+        <img
+          src="asset/Beranda/output-onlinegiftools.gif"
+          class="md:h-40 h-20"
+          draggable="false"
+          alt=""
+        />
+        <h2 class="text-2xl md:text-3xl font-bold mb-10">Jasa Kami</h2>
+
+        <div
+          class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 md:gap-8 gap-y-8 md:px-24 justify-center items-center"
+        >
+          <!-- Item 1: Nyaman Dipotong -->
+          <div class="flex flex-col items-center gap-y-4">
+            <img
+              src="asset/Beranda/Beranda_Product/nyamandipotong.png"
+              alt="Nyaman Dipotong"
+              class="w-40 h-auto object-contain shadow-2xl select-none transition-transform duration-300 hover:scale-105"
+              draggable="false"
+              onclick="openModal(this.src)"
+              style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+            />
+            <img
+              src="asset/Beranda/Beranda_Product/harganyamanpotong.png"
+              alt="Harga Nyaman Dipotong"
+              class="w-36 h-auto object-contain select-none"
+              draggable="false"
+            />
+          </div>
+
+          <!-- Item 2: Cukur Jenggot -->
+          <div class="flex flex-col items-center gap-y-4">
+            <img
+              src="asset/Beranda/Beranda_Product/cukurjenggot.png"
+              alt="Cukur Jenggot"
+              class="w-40 h-auto object-contain shadow-2xl select-none transition-transform duration-300 hover:scale-105"
+              draggable="false"
+              onclick="openModal(this.src)"
+              style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+            />
+            <img
+              src="asset/Beranda/Beranda_Product/hargacukurjenggot.png"
+              alt="Harga Cukur Jenggot"
+              class="w-36 h-auto object-contain select-none"
+              draggable="false"
+            />
+          </div>
+
+          <!-- Item 3: Cat Rambut -->
+          <div class="flex flex-col items-center gap-y-4">
+            <img
+              src="asset/Beranda/Beranda_Product/catrambut.png"
+              alt="Cat Rambut"
+              class="w-40 h-auto object-contain shadow-2xl select-none transition-transform duration-300 hover:scale-105"
+              draggable="false"
+              onclick="openModal(this.src)"
+              style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+            />
+            <img
+              src="asset/Beranda/Beranda_Product/hargacatrambut.png"
+              alt="Harga Cat Rambut"
+              class="w-36 h-auto object-contain select-none"
+              draggable="false"
+            />
+          </div>
+
+          <!-- Item 4: Pijat -->
+          <div class="flex flex-col items-center gap-y-4">
+            <img
+              src="asset/Beranda/Beranda_Product/pijat.png"
+              alt="Pijat"
+              class="w-40 h-auto object-contain shadow-2xl select-none transition-transform duration-300 hover:scale-105"
+              draggable="false"
+              onclick="openModal(this.src)"
+              style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+            />
+            <img
+              src="asset/Beranda/Beranda_Product/hargapijat.png"
+              alt="Harga Pijat"
+              class="w-36 h-auto object-contain select-none"
+              draggable="false"
+            />
+          </div>
+
+          <!-- Item 5: Nyaman Dipotong Lengkap -->
+          <div class="flex flex-col items-center gap-y-4">
+            <img
+              src="asset/Beranda/Beranda_Product/nyamandipotonglengkap.png"
+              alt="Nyaman Dipotong Lengkap"
+              class="w-40 h-auto object-contain shadow-2xl select-none transition-transform duration-300 hover:scale-105"
+              draggable="false"
+              onclick="openModal(this.src)"
+              style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+            />
+            <img
+              src="asset/Beranda/Beranda_Product/hargalengkap.png"
+              alt="Harga Nyaman Dipotong Lengkap"
+              class="w-36 h-auto object-contain select-none"
+              draggable="false"
+            />
+          </div>
+        </div>
+
+        <!-- Pelajari Selengkapnya -->
+        <a
+          href="layanan_kami.html"
+          class="mt-10 inline-block border border-white text-sm px-2 py-1 rounded-full hover:bg-white hover:text-[#37594D] transition font-medium"
+        >
+          Pelajari Selengkapnya
+        </a>
+
+        <div class="flex justify-center items-center mt-10">
+          <div
+            class="bg-white text-[#b57c3f] border-8 border-[#b57c3f] px-6 py-4 mx-4 mt-10 rounded-[35px] w-full max-w-md"
+          >
+            <div class="md:w-2/3">
+              <p class="text-start text-3xl font-semibold">Hubungi Kami</p>
+              <div class="md:py-3 py-6 md:space-y-2 space-y-4">
+                <!-- Nama -->
+                <div class="flex items-center border-b-2 border-[#b57c3f]">
+                  <label
+                    for="nama"
+                    class="text-[#b57c3f] mr-2 whitespace-nowrap"
+                    >Nama :</label
+                  >
+                  <input
+                    id="nama"
+                    type="text"
+                    class="bg-transparent border-none focus:outline-none text-[#b57c3f] w-full"
+                  />
+                </div>
+
+                <!-- No HP -->
+                <div class="flex items-center border-b-2 border-[#b57c3f]">
+                  <label
+                    for="nohp"
+                    class="text-[#b57c3f] mr-2 whitespace-nowrap"
+                    >No Hp :</label
+                  >
+                  <input
+                    id="nohp"
+                    type="text"
+                    class="bg-transparent border-none focus:outline-none text-[#b57c3f] w-full"
+                  />
+                </div>
+                <!-- <div class="border-b-2 border-[#b57c3f]">
+                  Email :<input
+                    type="text"
+                    class="bg-transparent border-none focus:outline-none text-[#b57c3f]"
+                  />
+                </div> -->
+              </div>
+            </div>
+            <label class="text-start block text-[#b57c3f]">Catatan:</label>
+            <textarea
+              id="catatan"
+              rows="4"
+              placeholder="Tulis di sini..."
+              class="text-start mb-6 w-full border-2 px-1 border-[#b57c3f] bg-transparent focus:outline-none text-[#b57c3f] placeholder-[#d9ba9a] mt-2 rounded-lg"
+            ></textarea>
+
+            <div class="flex justify-end">
+              <button
+                onclick="kirimPesanWA()"
+                class="bg-[#b57c3f] text-white px-4 py-2 rounded-xl hover:bg-[#a46930] transition"
+              >
+                Kirim
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Informasi Selengkapnya -->
+        <a
+          href="kontak.html"
+          class="my-10 inline-block border border-white text-sm px-2 py-1 rounded-full hover:bg-white hover:text-[#37594D] transition font-medium"
+        >
+          Informasi Selengkapnya
+        </a>
+      </div>
+      <img
+        src="asset/Beranda/bg_gunting.png"
+        class="absolute bottom-0 -z-10 w-full"
+        alt=""
+      />
+    </section>
+
+    <footer
+      style="
+        background-image: url(asset/footer.png);
+        background-repeat: no-repeat;
+        object-fit: cover;
+        background-size: 100% 100%;
+      "
+      class="text-white py-2 relative"
+    >
+      <div
+        class="absolute md:top-0 md:left-0 flex flex-col px-3 py-2 justify-center items-start"
+      >
+        <h1 class="font-semibold text-sm md:text-lg">Mari Terhubung</h1>
+        <div class="flex space-x-3 mt-2">
+          <a href="https://wa.me/6285259029299">
+            <img
+              src="asset/Icon/wa.png"
+              class="w-6 md:w-12 hover:scale-105 transition-transform duration-300"
+              alt="Whatsapp"
+              draggable="false"
+            />
+          </a>
+          <a href="https://www.instagram.com/nyamandipotong">
+            <img
+              src="asset/Icon/ig.png"
+              class="w-6 md:w-12 hover:scale-105 transition-transform duration-300"
+              alt="Instagram"
+              draggable="false"
+            />
+          </a>
+        </div>
+      </div>
+
+      <!-- Tengah -->
+      <div class="justify-center flex my-6 md:my-0">
+        <a href="index.html">
+          <img
+            src="asset/logo/logo_footer.png"
+            class="w-14 md:w-32"
+            alt="Logo Tengah"
+            draggable="false"
+          />
+        </a>
+      </div>
+
+      <!-- Kanan -->
+      <div
+        class="absolute right-0 bottom-0 flex px-3 mt-2 py-2 flex-col text-right text-[10px] md:text-sm"
+      >
+        <p>© Copyright 2025. All rights reserved.</p>
+        <p class="mt-1">Designed by Hatim</p>
+      </div>
+    </footer>
+    <script>
+      const audio = document.getElementById("lagu");
+      const judul = document.getElementById("judulLagu");
+      const playme = document.getElementById("playme");
+      const gambar = document.getElementById("gambarPiring");
+      const text = "LouisAdrien - At the Bistro";
+      let isPlaying = false;
+      let typingInterval;
+
+      function toggleLagu() {
+        if (isPlaying) {
+          audio.pause();
+        } else {
+          audio.play();
+        }
+      }
+
+      audio.onplaying = () => {
+        isPlaying = true;
+        judul.textContent = "";
+        playme.classList.add("hidden"); // sembunyikan pesan awal
+        gambar.src = "asset/piring-hitam.gif";
+        typePerChar(text, 100); // 100ms per huruf
+      };
+
+      audio.onpause = () => {
+        isPlaying = false;
+        judul.textContent = "";
+        playme.classList.remove("hidden"); // tampilkan pesan lagi
+        gambar.src = "asset/piring-hitam.png";
+        clearInterval(typingInterval);
+      };
+
+      function typePerChar(sentence, delay) {
+        let index = 0;
+        typingInterval = setInterval(() => {
+          if (index < sentence.length) {
+            judul.textContent += sentence.charAt(index);
+            index++;
+          } else {
+            clearInterval(typingInterval);
+          }
+        }, delay);
+      }
+    </script>
+
+    <script>
+      function kirimPesanWA() {
+        const nama = document.getElementById("nama").value.trim();
+        const nohp = document.getElementById("nohp").value.trim();
+        const catatan = document.getElementById("catatan").value.trim();
+
+        if (!nama || !nohp) {
+          alert("Nama dan No HP wajib diisi.");
+          return;
+        }
+
+        const pesan = `Halo, saya ${nama} ingin menghubungi Nyaman Dipotong. No HP saya: ${nohp}. Catatan: ${catatan}`;
+        const encodedPesan = encodeURIComponent(pesan);
+        const nomorTujuan = "6285259029299";
+        const linkWA = `https://wa.me/${nomorTujuan}?text=${encodedPesan}`;
+
+        // Buka link WA
+        const win = window.open(linkWA, "_blank");
+
+        // Backup: jika WA Business tidak isi teks otomatis
+        setTimeout(() => {
+          if (win) {
+            navigator.clipboard.writeText(pesan).then(() => {
+              alert(
+                "Jika pesan tidak muncul di WhatsApp, silakan tempel (paste) secara manual. Pesan sudah disalin ke clipboard."
+              );
+            });
+          } else {
+            alert("Gagal membuka WhatsApp. Coba nonaktifkan pop-up blocker.");
+          }
+        }, 2000); // cukup waktu agar WA terbuka dulu
+      }
+    </script>
+    <script>
+      function openModal(src) {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+
+        modalImg.src = src;
+        modal.classList.remove("hidden");
+
+        // Pakai timeout agar animasi bisa jalan
+        setTimeout(() => {
+          modalImg.classList.remove("scale-90", "opacity-0");
+          modalImg.classList.add("scale-100", "opacity-100");
+        }, 10);
+
+        // Matikan scroll body
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+
+        // Balik ke animasi awal
+        modalImg.classList.remove("scale-100", "opacity-100");
+        modalImg.classList.add("scale-90", "opacity-0");
+
+        // Tunggu animasi selesai baru sembunyikan modal
+        setTimeout(() => {
+          modal.classList.add("hidden");
+          document.body.style.overflow = ""; // Aktifkan scroll lagi
+        }, 300);
+      }
+    </script>
+  </body>
+</html>
+<!-- Modal Zoom -->
+<!-- Modal Zoom -->
+<div
+  id="imageModal"
+  class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden"
+  onclick="closeModal()"
+>
+  <img
+    id="modalImage"
+    src=""
+    class="max-w-full max-h-full object-contain rounded-lg shadow-lg transform scale-90 opacity-0 transition duration-300"
+  />
+</div>

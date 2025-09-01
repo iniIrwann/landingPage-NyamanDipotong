@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nyaman Dipotong</title>
+    <link
+      rel="icon"
+      href="asset/logo/logo-pavi.png"
+      class="w-auto"
+      type="image/png"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <!-- <script>
+    tailwind.config = {
+      theme: {
+        extend: {},
+        screens: {
+          xs: "360px",
+        },
+      },
+    };
+  </script> -->
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+    * {
+      font-family: "Montserrat", sans-serif;
+    }
+  </style>
+  <body class="relative text-white overflow-x-hidden bg-gray-100 text-gray-800">
+    <div
+      class="absolute inset-0 -z-10 bg-cover bg-no-repeat"
+      style="background-image: url('asset/MainBackground.webp')"
+    ></div>
+    <!-- warna nav aktif #B57D40 -->
+    <!-- Hero Section + Navbar -->
+    <section
+      class="relative md:h-screen h-[250px] flex items-center justify-center"
+    >
+      <!-- Background Image -->
+      <img
+        src="asset/Tentang/HeroImage.png"
+        alt="Background"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <!-- <div class="absolute inset-0 bg-black bg-opacity-40"></div> -->
+      <!-- Navbar -->
+      <nav
+        class="absolute top-0 left-0 z-20 w-full flex items-center justify-center px-4 md:px-8 text-white"
+      >
+        <!-- Logo kiri -->
+        <img src="asset/logo/logo.png" alt="Logo" class="md:w-20 w-10 pt-4" />
+
+        <!-- Menu kanan -->
+        <div class="relative w-fit ml-4 md:ml-auto">
+          <img
+            src="asset/Beranda/ornamen_navbar.png"
+            alt="Ornamen Navbar"
+            class="w-full md:h-auto h-14 z-0"
+          />
+
+          <ul
+            class="absolute inset-0 flex z-10 justify-center items-center md:space-x-24 space-x-2 sm:space-x-4 text-xs md:text-base font-medium text-white"
+          >
+            <li>
+              <a href="index.html" class="hover:text-[#B57D40]">Beranda</a>
+            </li>
+            <li>
+              <a href="#tentang" class="text-[#B57D40] hover:text-[#B57D40]"
+                >Tentang</a
+              >
+            </li>
+            <li>
+              <a href="layanan_kami.html" class="hover:text-[#B57D40]"
+                >Layanan Kami</a
+              >
+            </li>
+            <li>
+              <a href="kontak.html" class="hover:text-[#B57D40]">Kontak</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </section>
+
+    <!-- Visi & Misi Section -->
+    <section class="relative text-white">
+      <div class="md:h-screen">
+        <!-- Ornamen Kiri -->
+        <img
+          src="asset/Tentang/output-onlinegiftools.gif"
+          alt="Spiral Kiri"
+          class="hidden md:block absolute top-6 left-6 md:h-40 h-16"
+        />
+
+        <div class="md:h-screen md:px-0 md:pt-24 p-6 md:space-y-12">
+          <!-- Bagian Visi -->
+          <div
+            class="relative flex flex-col justify-center items-center text-center"
+          >
+            <img
+              src="asset/Layanan/ornamen_putih.svg"
+              alt=""
+              class="md:w-auto md:h-[400px] h-[170px] md:object-cover"
+              draggable="false"
+            />
+
+            <!-- Teks Visi -->
+            <div
+              class="absolute inset-0 flex flex-col md:justify-center items-center md:text-center md:py-2 py-6 px-4"
+            >
+              <h1 class="text-xl md:text-2xl font-bold">Visi</h1>
+              <p
+                class="text-[12px] md:text-base md:mt-2 md:w-[85%] md:max-w-3xl"
+              >
+                Menjadi barbershop pilihan utama yang memberikan pengalaman
+                potong rambut paling nyaman, berkualitas, dan berkesan, dengan
+                sentuhan nuansa vintage yang hangat untuk semua kalangan usia.
+              </p>
+              <h1 class="md:block hidden text-xl md:text-2xl font-bold">
+                Misi
+              </h1>
+              <ol
+                class="list-decimal md:block hidden list-inside space-y-2 text-[12px] md:text-base mt-2 md:w-[85%] max-w-3xl"
+              >
+                <li>
+                  Menyediakan layanan potong rambut yang profesional dan ramah,
+                  dengan kapster berpengalaman dan hasil cukuran terbaik.
+                </li>
+                <li>
+                  Menciptakan suasana barbershop yang nyaman, estetik, dan
+                  bersih, mulai dari aroma ruangan, musik klasik, hingga
+                  interior vintage.
+                </li>
+                <li>
+                  Menawarkan harga yang terjangkau tanpa mengorbankan kualitas
+                  pelayanan.
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Bagian Misi -->
+          <div
+            class="md:hidden relative flex flex-col justify-center items-center text-center"
+          >
+            <!-- Ornamen SVG sebagai latar belakang -->
+            <img
+              src="asset/Layanan/ornamen_putih.svg"
+              alt=""
+              class="w-full h-[250px] object-fill"
+              draggable="false"
+            />
+
+            <!-- Teks di dalam ornamen -->
+            <div class="absolute inset-0 px-4 py-6 flex flex-col items-center">
+              <h1 class="text-xl font-bold">Misi</h1>
+              <div class="overflow-y-auto max-h-64 w-full max-w-[90%] pr-1">
+                <ol class="list-decimal list-inside space-y-2 text-[12px]">
+                  <li>
+                    Menyediakan layanan potong rambut yang profesional dan
+                    ramah, dengan kapster berpengalaman dan hasil cukuran
+                    terbaik.
+                  </li>
+                  <li>
+                    Menciptakan suasana barbershop yang nyaman, estetik, dan
+                    bersih, mulai dari aroma ruangan, musik klasik, hingga
+                    interior vintage.
+                  </li>
+                  <li>
+                    Menawarkan harga yang terjangkau tanpa mengorbankan kualitas
+                    pelayanan.
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="relative text-white">
+      <div class="md:h-screen">
+        <div class="md:h-screen md:px-0 md:pt-2 p-6">
+          <div
+            class="relative justify-center items-center text-center flex flex-col"
+          >
+            <img
+              src="asset/Layanan/ornamen_putih.svg"
+              alt=""
+              class="md:w-auto md:h-[400px] hidden md:block md:object-cover object-fill"
+              draggable="false"
+            />
+
+            <!-- Teks di atas gambar -->
+            <div
+              class="md:absolute inset-0 flex flex-col justify-center items-center text-center"
+            >
+              <h1 class="text-2xl font-bold">Sejarah</h1>
+              <p
+                class="text-[12px] md:text-base md:mt-2 md:w-[85%] md:max-w-3xl"
+              >
+                Barbershop Nyaman Dipotong didirikan oleh Bapak Novian Alexandri
+                sebagai bentuk respon terhadap kebutuhan akan tempat cukur yang
+                nyaman dan terjangkau di kawasan Antapani. Berawal dari
+                pengalamannya sejak tahun 2013 membangun barbershop, beliau
+                melihat peluang di daerah pemukiman untuk menghadirkan tempat
+                potong rambut yang hangat, praktis, dan ramah keluarga. Dengan
+                konsep yang berbeda dari barbershop pada umumnya—mengusung
+                nuansa vintage, musik klasik, dan interior bernuansa
+                hijau—Nyaman Dipotong menjadi tempat di mana pelanggan dari
+                segala usia bisa merasa rileks dan dilayani dengan sepenuh hati.
+                Nama "Nyaman Dipotong" sendiri dipilih karena mudah diingat dan
+                mencerminkan misi utama: membuat pengalaman potong rambut
+                menjadi sesuatu yang nyaman dan menyenangkan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Tim Kerja -->
+    <section class="relative text-white text-center">
+      <h2 class="text-3xl font-bold mb-6">Tim Kerja</h2>
+      <!-- Owner di baris pertama, center -->
+      <div class="flex justify-center mb-6">
+        <div class="flex flex-col items-center">
+          <!-- Foto -->
+          <img
+            src="asset/Tentang/TimKerja/1.png"
+            alt="Novian"
+            class="w-52 h-auto object-cover shadow-xl rounded-md"
+            style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+          />
+
+          <div class="relative mt-3 px-6 py-2 text-center text-white">
+            <img
+              src="asset/Tentang/ornamen_putih.png"
+              alt=""
+              class="absolute inset-0 w-full h-full object-contain pointer-events-none"
+            />
+            <img
+              src="asset/Tentang/ornamen_putih.png"
+              alt=""
+              class="absolute inset-0 w-[97%] h-full mx-auto object-contain pointer-events-none"
+            />
+
+            <div class="relative z-10 py-1 font-semibold">
+              <span class="text-sm"> Novian Alexandri </span>
+              <br />
+              <span class="text-xs font-normal">(Owner dan Kapster)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tiga anggota di baris kedua, grid -->
+      <div
+        class="flex flex-col md:flex-row justify-center items-center gap-8 md:space-x-12 pb-10"
+      >
+        <div class="flex flex-col items-center">
+          <!-- Foto -->
+          <img
+            src="asset/Tentang/TimKerja/3.png"
+            alt="Yanti"
+            class="w-52 h-auto object-cover shadow-xl rounded-md"
+            style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+          />
+
+          <div class="relative mt-3 px-6 py-2 text-center text-white">
+            <img
+              src="asset/Tentang/ornamen_putih.png"
+              alt=""
+              class="absolute inset-0 w-full h-full object-contain pointer-events-none"
+            />
+            <img
+              src="asset/Tentang/ornamen_putih.png"
+              alt=""
+              class="absolute inset-0 w-[97%] h-full mx-auto object-contain pointer-events-none"
+            />
+
+            <div class="relative z-10 py-1 font-semibold">
+              <span class="text-sm"> Yanti (Kasir) </span>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col items-center">
+          <!-- Foto -->
+          <img
+            src="asset/Tentang/TimKerja/4.png"
+            alt="Dudung"
+            class="w-52 h-auto object-cover shadow-xl rounded-md"
+            style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+          />
+
+          <div class="relative mt-3 px-6 py-2 text-center text-white">
+            <img
+              src="asset/Tentang/ornamen_putih.png"
+              alt=""
+              class="absolute inset-0 w-full h-full object-contain pointer-events-none"
+            />
+            <img
+              src="asset/Tentang/ornamen_putih.png"
+              alt=""
+              class="absolute inset-0 w-[97%] h-full mx-auto object-contain pointer-events-none"
+            />
+
+            <div class="relative z-10 py-1 font-semibold">
+              <span class="text-xs"> Dudung (Kapster) </span>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col items-center">
+          <!-- Foto -->
+          <img
+            src="asset/Tentang/TimKerja/2.png"
+            alt="Rais"
+            class="w-52 h-auto object-cover shadow-xl rounded-md"
+            style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+          />
+
+          <div class="relative mt-3 px-6 py-2 text-center text-white">
+            <img
+              src="asset/Tentang/ornamen_putih.png"
+              alt=""
+              class="absolute inset-0 w-full h-full object-contain pointer-events-none"
+            />
+            <img
+              src="asset/Tentang/ornamen_putih.png"
+              alt=""
+              class="absolute inset-0 w-[95%] h-full mx-auto object-contain pointer-events-none"
+            />
+
+            <div class="relative z-10 py-1 font-semibold">
+              <span class="text-sm"> Rais (Kapster) </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="asset/Tentang/elemen_bawah.png"
+        class="absolute bottom-0 w-full"
+        alt=""
+      />
+    </section>
+
+    <!-- Footer -->
+    <footer
+      style="
+        background-image: url(asset/footer.png);
+        background-repeat: no-repeat;
+        object-fit: cover;
+        background-size: 100% 100%;
+      "
+      class="text-white py-2 relative"
+    >
+      <div
+        class="absolute md:top-0 md:left-0 flex flex-col px-3 py-2 justify-center items-start"
+      >
+        <h1 class="font-semibold text-sm md:text-lg">Mari Terhubung</h1>
+        <div class="flex space-x-4 mt-2">
+          <a href="https://wa.me/6285259029299">
+            <img
+              src="asset/Icon/wa.png"
+              class="w-8 md:w-12 hover:scale-105 transition-transform duration-300"
+              alt="Whatsapp"
+              draggable="false"
+            />
+          </a>
+          <a href="https://www.instagram.com/nyamandipotong">
+            <img
+              src="asset/Icon/ig.png"
+              class="w-8 md:w-12 hover:scale-105 transition-transform duration-300"
+              alt="Instagram"
+              draggable="false"
+            />
+          </a>
+        </div>
+      </div>
+
+      <!-- Tengah -->
+      <div class="justify-center flex my-8 md:my-0">
+        <a href="index.html">
+          <img
+            src="asset/logo/logo_footer.png"
+            class="w-16 md:w-32"
+            alt="Logo Tengah"
+            draggable="false"
+          />
+        </a>
+      </div>
+
+      <!-- Kanan -->
+      <div
+        class="absolute right-0 bottom-0 flex px-3 mt-2 py-2 flex-col text-right text-xs md:text-sm"
+      >
+        <p>© Copyright 2025. All rights reserved.</p>
+        <p class="text-xs mt-1">Designed by Hatim</p>
+      </div>
+    </footer>
+  </body>
+</html>

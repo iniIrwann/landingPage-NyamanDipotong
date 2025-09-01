@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nyaman Dipotong</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+    <link
+      rel="icon"
+      href="asset/logo/logo-pavi.png"
+      class="w-auto"
+      type="image/png"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+    * {
+      font-family: "Montserrat", sans-serif;
+    }
+  </style>
+  <body
+    class="relative text-white overflow-x-hidden bg-gray-100 text-gray-800"
+    x-data="{ halaman: 'beranda', isPlaying: false }"
+  >
+    <div
+      class="absolute inset-0 -z-10 bg-cover bg-no-repeat"
+      style="background-image: url('asset/MainBackground.webp')"
+    ></div>
+    <!-- === Audio Player Tetap === -->
+    <audio id="lagu" src="asset/LouisAdrien-AttheBistro.mp3"></audio>
+    <div class="fixed md:bottom-4 md:right-4 bottom-10 right-5 z-50 flex items-center space-x-2">
+      <p
+        id="judulLagu"
+        class="text-white font-bold px-2 py-1 text-sm min-w-[10px] whitespace-nowrap"
+      ></p>
+      <p
+        id="playme"
+        class="absolute bottom-full mb-2 right-0 text-white bg-black/70 rounded px-2 py-1 text-xs"
+      >
+        ðŸŽµ Klik untuk mulai musik
+      </p>
+
+      <img
+        onclick="toggleLagu()"
+        id="gambarPiring"
+        src="asset/piring-hitam.png"
+        class="w-16 md:w-20 cursor-pointer"
+        alt="Piring Hitam"
+      />
+    </div>
+
+    <!-- === KONTEN === -->
+    <main>
+      <div x-show="halaman === 'beranda'">
+        <!-- Nav + Hero Section -->
+        <section
+          class="relative md:h-screen h-[225px] flex items-center text-center justify-center"
+        >
+          <!-- Background Image -->
+          <img
+            src="asset/Beranda/HeroImage1.webp"
+            alt="Background"
+            class="absolute inset-0 w-full h-full object-cover"
+          />
+          <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+          <!-- Navbar -->
+          <nav
+            class="absolute top-0 left-0 z-20 w-full flex items-center justify-center px-4 md:px-8 text-white"
+          >
+            <!-- Logo kiri -->
+            <a href="#" @click.prevent="halaman = 'beranda'">
+              <img
+                src="asset/logo/logo.png"
+                alt="Logo"
+                class="md:w-20 w-10 pt-4"
+              />
+            </a>
+
+            <!-- Menu kanan -->
+            <div class="relative w-fit ml-4 md:ml-auto">
+              <img
+                src="asset/Beranda/ornamen_navbar.png"
+                alt="Ornamen Navbar"
+                class="w-full md:h-auto h-14 z-0"
+              />
+
+              <ul
+                class="absolute inset-0 flex z-10 justify-center items-center md:space-x-24 space-x-4 sm:space-x-4 text-[10px] md:text-base font-medium text-white"
+              >
+                <li>
+                  <a
+                    href="#"
+                    @click.prevent="halaman = 'beranda'"
+                    class="text-[#B57D40] hover:text-[#B57D40]"
+                    >Beranda</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    @click.prevent="halaman = 'tentang'"
+                    class="hover:text-[#B57D40]"
+                    >Tentang</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    @click.prevent="halaman = 'layanan'"
+                    class="hover:text-[#B57D40]"
+                    >Layanan Kami</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    @click.prevent="halaman = 'kontak'"
+                    class="hover:text-[#B57D40]"
+                    >Kontak</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </nav>
+
+          <!-- Hero text -->
+          <div
+            class="relative z-10 flex flex-col text-center justify-end md:justify-end items-center h-full text-white px-4 py-2 md:py-6"
+          >
+            <h1 class="text-xl md:text-6xl font-extrabold mb-1 md:mb-4">
+              Suasana yang membuatmu rindu
+            </h1>
+            <p class="text-[12px] md:text-[16px] max-w-4xl">
+              Tempat di mana gaya rambut bukan sekadar potongan, tapi cerminan
+              gaya hidup. Kami siap memberikan pelayanan terbaik agar Anda
+              tampil percaya diri, segar, dan penuh karakter.
+            </p>
+          </div>
+        </section>
+        <!-- Tentang -->
+        <section
+          id="beranda"
+          class="relative mt-5 md:mt-10 md:h-full bg-white overflow-hidden"
+        >
+          <div class="relative w-full">
+            <img
+              src="asset/Beranda/HeroImage2.webp"
+              alt="Pattern Background"
+              class="w-full md:h-auto sm:h-[60vh] h-[60vh] object-cover"
+            />
+
+            <div
+              class="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-6 py-2 md:py-10"
+            >
+              <div
+                class="relative flex md:w-[90%] md:max-w-4xl w-full justify-center"
+              >
+                <!--  Mobile: Background hijau fleksibel -->
+                <div class="md:hidden w-full rounded-xl bg-[#3f5e57] px-6 py-6">
+                  <h2 class="text-2xl md:text-3xl font-bold mb-3">Tentang</h2>
+                  <p class="text-[12px] md:text-base max-w-2xl">
+                    Nyaman Dipotong adalah ruang yang memadukan nuansa vintage
+                    dengan pelayanan dan fasilitas yang baik. Barbershop Nyaman
+                    Dpotong membangun kapster yang sudah berpengalaman, yang
+                    tidak hanya terampil, tapi juga mengedepankan rasa hormat,
+                    ketulusan, dan kesederhanaan dalam setiap pelayanan. Karena
+                    bagi kami, kenyamanan bukan hanya slogan, melainkan janji
+                    yang ingin kami jaga.
+                  </p>
+                  <a
+                    href="#" @click.prevent="halaman = 'tentang'"
+                    class="mt-6 inline-block border border-white px-2 py-1 font-medium rounded-full hover:bg-white hover:text-green-900 transition text-sm"
+                  >
+                    Pelajari Selengkapnya
+                  </a>
+                </div>
+
+                <!--  Desktop: Ornamen papan dan teks di atasnya -->
+                <div class="hidden md:block relative w-full">
+                  <img
+                    src="asset/Beranda/ornamen_tentang.png"
+                    alt="Papan Konten"
+                    class="w-full h-auto py-10 object-contain"
+                  />
+                  <div
+                    class="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-6 py-10"
+                  >
+                    <h2 class="text-3xl font-bold mb-6">Tentang</h2>
+                    <p class="text-[18px] max-w-2xl">
+                      Nyaman Dipotong adalah ruang yang memadukan nuansa vintage
+                      dengan pelayanan dan fasilitas yang baik. Barbershop
+                      Nyaman Dpotong membangun kapster yang sudah berpengalaman,
+                      yang tidak hanya terampil, tapi juga mengedepankan rasa
+                      hormat, ketulusan, dan kesederhanaan dalam setiap
+                      pelayanan. Karena bagi kami, kenyamanan bukan hanya
+                      slogan, melainkan janji yang ingin kami jaga.
+                    </p>
+                    <a
+                      href="#" @click.prevent="halaman = 'tentang'"
+                      class="mt-6 inline-block border border-white text-sm px-2 py-1 font-medium rounded-full hover:bg-white hover:text-green-900 transition"
+                    >
+                      Pelajari Selengkapnya
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Jasa Kami -->
+        <section class="relative text-white text-center">
+          <div class="md:py-8 pb-8 pt-4 ps-2 pr-4 md:px-4">
+            <img
+              src="asset/Beranda/output-onlinegiftools.gif"
+              class="md:h-40 h-20"
+              draggable="false"
+              alt=""
+            />
+            <h2 class="text-2xl md:text-3xl font-bold mb-10">Jasa Kami</h2>
+
+            <div
+              class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 md:gap-8 gap-y-8 md:px-24 justify-center items-center"
+            >
+              <!-- Item 1: Nyaman Dipotong -->
+              <div class="flex flex-col items-center gap-y-4">
+                <img
+                  src="asset/Beranda/Beranda_Product/nyamandipotong.png"
+                  alt="Nyaman Dipotong"
+                  class="w-40 h-auto object-contain shadow-2xl select-none transition-transform duration-300 hover:scale-105"
+                  draggable="false"
+                  onclick="openModal(this.src)"
+                  style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+                />
+                <img
+                  src="asset/Beranda/Beranda_Product/harganyamanpotong.png"
+                  alt="Harga Nyaman Dipotong"
+                  class="w-36 h-auto object-contain select-none"
+                  draggable="false"
+                />
+              </div>
+
+              <!-- Item 2: Cukur Jenggot -->
+              <div class="flex flex-col items-center gap-y-4">
+                <img
+                  src="asset/Beranda/Beranda_Product/cukurjenggot.png"
+                  alt="Cukur Jenggot"
+                  class="w-40 h-auto object-contain shadow-2xl select-none transition-transform duration-300 hover:scale-105"
+                  draggable="false"
+                  onclick="openModal(this.src)"
+                  style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+                />
+                <img
+                  src="asset/Beranda/Beranda_Product/hargacukurjenggot.png"
+                  alt="Harga Cukur Jenggot"
+                  class="w-36 h-auto object-contain select-none"
+                  draggable="false"
+                />
+              </div>
+
+              <!-- Item 3: Cat Rambut -->
+              <div class="flex flex-col items-center gap-y-4">
+                <img
+                  src="asset/Beranda/Beranda_Product/catrambut.png"
+                  alt="Cat Rambut"
+                  class="w-40 h-auto object-contain shadow-2xl select-none transition-transform duration-300 hover:scale-105"
+                  draggable="false"
+                  onclick="openModal(this.src)"
+                  style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+                />
+                <img
+                  src="asset/Beranda/Beranda_Product/hargacatrambut.png"
+                  alt="Harga Cat Rambut"
+                  class="w-36 h-auto object-contain select-none"
+                  draggable="false"
+                />
+              </div>
+
+              <!-- Item 4: Pijat -->
+              <div class="flex flex-col items-center gap-y-4">
+                <img
+                  src="asset/Beranda/Beranda_Product/pijat.png"
+                  alt="Pijat"
+                  class="w-40 h-auto object-contain shadow-2xl select-none transition-transform duration-300 hover:scale-105"
+                  draggable="false"
+                  onclick="openModal(this.src)"
+                  style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+                />
+                <img
+                  src="asset/Beranda/Beranda_Product/hargapijat.png"
+                  alt="Harga Pijat"
+                  class="w-36 h-auto object-contain select-none"
+                  draggable="false"
+                />
+              </div>
+
+              <!-- Item 5: Nyaman Dipotong Lengkap -->
+              <div class="hidden md:flex flex-col items-center gap-y-4">
+                <img
+                  src="asset/Beranda/Beranda_Product/nyamandipotonglengkap.png"
+                  alt="Nyaman Dipotong Lengkap"
+                  class="w-40 h-auto object-contain shadow-2xl select-none transition-transform duration-300 hover:scale-105"
+                  draggable="false"
+                  onclick="openModal(this.src)"
+                  style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+                />
+                <img
+                  src="asset/Beranda/Beranda_Product/hargalengkap.png"
+                  alt="Harga Nyaman Dipotong Lengkap"
+                  class="w-36 h-auto object-contain select-none"
+                  draggable="false"
+                />
+              </div>
+            </div>
+
+            <!-- Item 5: Nyaman Dipotong Lengkap -->
+            <div class="md:hidden flex flex-col items-center mt-8 gap-y-4">
+              <img
+                src="asset/Beranda/Beranda_Product/nyamandipotonglengkap.png"
+                alt="Nyaman Dipotong Lengkap"
+                class="w-40 h-auto object-contain shadow-2xl select-none transition-transform duration-300 hover:scale-105"
+                draggable="false"
+                onclick="openModal(this.src)"
+                style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+              />
+              <img
+                src="asset/Beranda/Beranda_Product/hargalengkap.png"
+                alt="Harga Nyaman Dipotong Lengkap"
+                class="w-36 h-auto object-contain select-none"
+                draggable="false"
+              />
+            </div>
+
+            <!-- Pelajari Selengkapnya -->
+            <a
+              href="#" @click.prevent="halaman = 'layanan'"
+              class="mt-10 inline-block border border-white text-sm px-2 py-1 rounded-full hover:bg-white hover:text-[#37594D] transition font-medium"
+            >
+              Pelajari Selengkapnya
+            </a>
+
+            <div class="flex justify-center items-center mt-10">
+              <div
+                class="bg-white text-[#b57c3f] border-8 border-[#b57c3f] px-6 py-4 mx-4 mt-10 rounded-[35px] w-full max-w-md"
+              >
+                <div class="md:w-2/3">
+                  <p class="text-start text-2xl md:text-3xl font-semibold">
+                    Hubungi Kami
+                  </p>
+                  <div
+                    class="md:py-3 py-6 md:space-y-2 text-[14px] md:text-base space-y-4"
+                  >
+                    <!-- Nama -->
+                    <div class="flex items-center border-b-2 border-[#b57c3f]">
+                      <label
+                        for="nama"
+                        class="text-[#b57c3f] mr-2 whitespace-nowrap"
+                        >Nama :</label
+                      >
+                      <input
+                        id="nama"
+                        type="text"
+                        class="bg-transparent border-none focus:outline-none text-[#b57c3f] w-full"
+                      />
+                    </div>
+
+                    <!-- No HP -->
+                    <div class="flex items-center border-b-2 border-[#b57c3f]">
+                      <label
+                        for="nohp"
+                        class="text-[#b57c3f] mr-2 whitespace-nowrap"
+                        >No Hp :</label
+                      >
+                      <input
+                        id="nohp"
+                        type="text"
+                        class="bg-transparent border-none focus:outline-none text-[#b57c3f] w-full"
+                      />
+                    </div>
+                    <!-- <div class="border-b-2 border-[#b57c3f]">
+                  Email :<input
+                    type="text"
+                    class="bg-transparent border-none focus:outline-none text-[#b57c3f]"
+                  />
+                </div> -->
+                  </div>
+                </div>
+                <label
+                  class="text-start text-[14px] md:text-base block text-[#b57c3f]"
+                  >Catatan:</label
+                >
+                <textarea
+                  id="catatan"
+                  rows="4"
+                  placeholder="Tulis di sini..."
+                  class="text-start mb-6 text-[14px] md:text-base w-full border-2 px-1 border-[#b57c3f] bg-transparent focus:outline-none text-[#b57c3f] placeholder-[#d9ba9a] mt-2 rounded-lg"
+                ></textarea>
+
+                <div class="flex justify-end">
+                  <button
+                    onclick="kirimPesanWA()"
+                    class="bg-[#b57c3f] text-white text-[14px] md:text-base px-4 py-2 rounded-xl hover:bg-[#a46930] transition"
+                  >
+                    Kirim
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Informasi Selengkapnya -->
+            <a
+              href="#" @click.prevent="halaman = 'kontak'"
+              class="my-10 inline-block border border-white text-sm px-2 py-1 rounded-full hover:bg-white hover:text-[#37594D] transition font-medium"
+            >
+              Informasi Selengkapnya
+            </a>
+          </div>
+          <img
+            src="asset/Beranda/bg_gunting.png"
+            class="absolute bottom-0 -z-10 w-full"
+            alt=""
+          />
+        </section>
+        <!-- Footer -->
+
+        <script>
+          function kirimPesanWA() {
+            const nama = document.getElementById("nama").value.trim();
+            const nohp = document.getElementById("nohp").value.trim();
+            const catatan = document.getElementById("catatan").value.trim();
+
+            if (!nama || !nohp) {
+              alert("Nama dan No HP wajib diisi.");
+              return;
+            }
+
+            const pesan = `Halo, saya ${nama} ingin menghubungi Nyaman Dipotong. No HP saya: ${nohp}. Catatan: ${catatan}`;
+            const encodedPesan = encodeURIComponent(pesan);
+            const nomorTujuan = "6285259029299";
+            const linkWA = `https://wa.me/${nomorTujuan}?text=${encodedPesan}`;
+
+            // Buka link WA
+            const win = window.open(linkWA, "_blank");
+
+            // Backup: jika WA Business tidak isi teks otomatis
+            setTimeout(() => {
+              if (win) {
+                navigator.clipboard.writeText(pesan).then(() => {
+                  alert(
+                    "Jika pesan tidak muncul di WhatsApp, silakan tempel (paste) secara manual. Pesan sudah disalin ke clipboard."
+                  );
+                });
+              } else {
+                alert(
+                  "Gagal membuka WhatsApp. Coba nonaktifkan pop-up blocker."
+                );
+              }
+            }, 2000); // cukup waktu agar WA terbuka dulu
+          }
+        </script>
+        <script>
+          function openModal(src) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+
+            modalImg.src = src;
+            modal.classList.remove("hidden");
+
+            // Pakai timeout agar animasi bisa jalan
+            setTimeout(() => {
+              modalImg.classList.remove("scale-90", "opacity-0");
+              modalImg.classList.add("scale-100", "opacity-100");
+            }, 10);
+
+            // Matikan scroll body
+            document.body.style.overflow = "hidden";
+          }
+
+          function closeModal() {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+
+            // Balik ke animasi awal
+            modalImg.classList.remove("scale-100", "opacity-100");
+            modalImg.classList.add("scale-90", "opacity-0");
+
+            // Tunggu animasi selesai baru sembunyikan modal
+            setTimeout(() => {
+              modal.classList.add("hidden");
+              document.body.style.overflow = ""; // Aktifkan scroll lagi
+            }, 300);
+          }
+        </script>
+      </div>
+      <div x-show="halaman === 'tentang'">
+        <section
+          class="relative md:h-screen h-[225px] flex items-center justify-center"
+        >
+          <!-- Background Image -->
+          <img
+            src="asset/Tentang/HeroImage.png"
+            alt="Background"
+            class="absolute inset-0 w-full h-full object-cover"
+          />
+          <!-- <div class="absolute inset-0 bg-black bg-opacity-40"></div> -->
+          <!-- Navbar -->
+          <nav
+            class="absolute top-0 left-0 z-20 w-full flex items-center justify-center px-4 md:px-8 text-white"
+          >
+            <!-- Logo kiri -->
+           <a href="#" @click.prevent="halaman = 'beranda'">
+              <img
+                src="asset/logo/logo.png"
+                alt="Logo"
+                class="md:w-20 w-10 pt-4"
+              />
+            </a>
+
+            <!-- Menu kanan -->
+            <div class="relative w-fit ml-4 md:ml-auto">
+              <img
+                src="asset/Beranda/ornamen_navbar.png"
+                alt="Ornamen Navbar"
+                class="w-full md:h-auto h-14 z-0"
+              />
+
+              <ul
+                class="absolute inset-0 flex z-10 justify-center items-center md:space-x-24 space-x-4 sm:space-x-4 text-[10px] md:text-base font-medium text-white"
+              >
+                <li>
+                  <a
+                    href="#"
+                    @click.prevent="halaman = 'beranda'"
+                    class="hover:text-[#B57D40]"
+                    >Beranda</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    @click.prevent="halaman = 'tentang'"
+                    class="text-[#B57D40] hover:text-[#B57D40]"
+                    >Tentang</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    @click.prevent="halaman = 'layanan'"
+                    class="hover:text-[#B57D40]"
+                    >Layanan Kami</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    @click.prevent="halaman = 'kontak'"
+                    class="hover:text-[#B57D40]"
+                    >Kontak</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </section>
+
+        <!-- Visi & Misi Section -->
+        <section class="relative text-white">
+          <div class="md:h-screen">
+            <!-- Ornamen Kiri -->
+            <img
+              src="asset/Tentang/output-onlinegiftools.gif"
+              alt="Spiral Kiri"
+              class="absolute md:top-6 md:left-6 top-3 left-0 md:h-40 h-16"
+            />
+
+            <div class="md:h-screen md:px-0 md:pt-24 p-6 md:space-y-12">
+              <!-- Bagian Visi -->
+              <div
+                class="relative flex flex-col justify-center items-center text-center"
+              >
+                <img
+                  src="asset/Layanan/ornamen_putih.png"
+                  alt=""
+                  class="md:w-auto md:h-[400px] h-[170px] md:object-cover"
+                  draggable="false"
+                />
+
+                <!-- Teks Visi -->
+                <div
+                  class="absolute inset-0 flex flex-col md:justify-center items-center md:text-center md:py-2 py-6 px-4"
+                >
+                  <h1 class="text-xl md:text-2xl font-bold">Visi</h1>
+                  <p
+                    class="text-[12px] md:text-base md:mt-2 md:w-[85%] md:max-w-3xl"
+                  >
+                    Menjadi barbershop pilihan utama yang memberikan pengalaman
+                    potong rambut paling nyaman, berkualitas, dan berkesan,
+                    dengan sentuhan nuansa vintage yang hangat untuk semua
+                    kalangan usia.
+                  </p>
+                  <h1 class="md:block hidden text-xl md:text-2xl font-bold">
+                    Misi
+                  </h1>
+                  <ol
+                    class="list-decimal md:block hidden list-inside space-y-2 text-[12px] md:text-base mt-2 md:w-[85%] max-w-3xl"
+                  >
+                    <li>
+                      Menyediakan layanan potong rambut yang profesional dan
+                      ramah, dengan kapster berpengalaman dan hasil cukuran
+                      terbaik.
+                    </li>
+                    <li>
+                      Menciptakan suasana barbershop yang nyaman, estetik, dan
+                      bersih, mulai dari aroma ruangan, musik klasik, hingga
+                      interior vintage.
+                    </li>
+                    <li>
+                      Menawarkan harga yang terjangkau tanpa mengorbankan
+                      kualitas pelayanan.
+                    </li>
+                  </ol>
+                </div>
+              </div>
+
+              <!-- Bagian Misi -->
+              <div
+                class="md:hidden relative flex flex-col justify-center items-center text-center"
+              >
+                <!-- Ornamen SVG sebagai latar belakang -->
+                <img
+                  src="asset/Layanan/ornamen_putih.png"
+                  alt=""
+                  class="w-full h-[250px]"
+                  draggable="false"
+                />
+
+                <!-- Teks di dalam ornamen -->
+                <div
+                  class="absolute inset-0 px-4 py-6 flex flex-col items-center"
+                >
+                  <h1 class="text-xl font-bold">Misi</h1>
+                  <div class="overflow-y-auto max-h-64 w-full max-w-[90%] pr-1">
+                    <ol class="list-decimal list-inside space-y-2 text-[12px]">
+                      <li>
+                        Menyediakan layanan potong rambut yang profesional dan
+                        ramah, dengan kapster berpengalaman dan hasil cukuran
+                        terbaik.
+                      </li>
+                      <li>
+                        Menciptakan suasana barbershop yang nyaman, estetik, dan
+                        bersih, mulai dari aroma ruangan, musik klasik, hingga
+                        interior vintage.
+                      </li>
+                      <li>
+                        Menawarkan harga yang terjangkau tanpa mengorbankan
+                        kualitas pelayanan.
+                      </li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="relative text-white">
+          <div class="md:h-screen">
+            <div class="md:h-screen md:px-0 md:pt-2 p-6">
+              <div
+                class="relative justify-center items-center text-center flex flex-col"
+              >
+                <img
+                  src="asset/Layanan/ornamen_putih.png"
+                  alt=""
+                  class="md:w-auto md:h-[400px] hidden w-full h-[400px]"
+                  draggable="false"
+                />
+
+                <!-- Teks di atas gambar -->
+                <div
+                  class="inset-0 flex flex-col justify-center items-center text-center"
+                >
+                  <h1 class="text-2xl font-bold">Sejarah</h1>
+                  <p
+                    class="text-[12px] md:text-base md:mt-2 mt-1 w-[100%] md:max-w-3xl"
+                  >
+                    Barbershop Nyaman Dipotong didirikan oleh Bapak Novian
+                    Alexandri sebagai bentuk respon terhadap kebutuhan akan
+                    tempat cukur yang nyaman dan terjangkau di kawasan Antapani.
+                    Berawal dari pengalamannya sejak tahun 2013 membangun
+                    barbershop, beliau melihat peluang di daerah pemukiman untuk
+                    menghadirkan tempat potong rambut yang hangat, praktis, dan
+                    ramah keluarga. Dengan konsep yang berbeda dari barbershop
+                    pada umumnyaâ€”mengusung nuansa vintage, musik klasik, dan
+                    interior bernuansa hijauâ€”Nyaman Dipotong menjadi tempat di
+                    mana pelanggan dari segala usia bisa merasa rileks dan
+                    dilayani dengan sepenuh hati. Nama "Nyaman Dipotong" sendiri
+                    dipilih karena mudah diingat dan mencerminkan misi utama:
+                    membuat pengalaman potong rambut menjadi sesuatu yang nyaman
+                    dan menyenangkan.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section Tim Kerja -->
+        <section class="relative text-white text-center">
+          <h2 class="text-2xl md:text-3xl font-bold mb-6">Tim Kerja</h2>
+          <!-- Owner di baris pertama, center -->
+          <div class="flex justify-center mb-6">
+            <div class="flex flex-col items-center">
+              <!-- Foto -->
+              <img
+                src="asset/Tentang/TimKerja/1.png"
+                alt="Novian"
+                class="w-52 h-auto object-cover shadow-xl rounded-md"
+                style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+              />
+
+              <div class="relative mt-3 px-6 py-2 text-center text-white">
+                <img
+                  src="asset/Tentang/ornamen_putih.png"
+                  alt=""
+                  class="absolute inset-0 w-full h-full object-contain pointer-events-none"
+                />
+                <img
+                  src="asset/Tentang/ornamen_putih.png"
+                  alt=""
+                  class="absolute inset-0 w-[97%] h-full mx-auto object-contain pointer-events-none"
+                />
+
+                <div class="relative z-10 py-1 font-semibold">
+                  <span class="text-sm"> Novian Alexandri </span>
+                  <br />
+                  <span class="text-xs font-normal">(Owner dan Kapster)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tiga anggota di baris kedua, grid -->
+          <div
+            class="flex flex-col md:flex-row justify-center items-center gap-8 md:space-x-12 pb-10"
+          >
+            <div class="flex flex-col items-center">
+              <!-- Foto -->
+              <img
+                src="asset/Tentang/TimKerja/3.png"
+                alt="Yanti"
+                class="w-52 h-auto object-cover shadow-xl rounded-md"
+                style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+              />
+
+              <div class="relative mt-3 px-6 py-2 text-center text-white">
+                <img
+                  src="asset/Tentang/ornamen_putih.png"
+                  alt=""
+                  class="absolute inset-0 w-full h-full object-contain pointer-events-none"
+                />
+                <img
+                  src="asset/Tentang/ornamen_putih.png"
+                  alt=""
+                  class="absolute inset-0 w-[97%] h-full mx-auto object-contain pointer-events-none"
+                />
+
+                <div class="relative z-10 py-1 font-semibold">
+                  <span class="text-sm"> Yanti (Kasir) </span>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col items-center">
+              <!-- Foto -->
+              <img
+                src="asset/Tentang/TimKerja/4.png"
+                alt="Dudung"
+                class="w-52 h-auto object-cover shadow-xl rounded-md"
+                style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+              />
+
+              <div class="relative mt-3 px-6 py-2 text-center text-white">
+                <img
+                  src="asset/Tentang/ornamen_putih.png"
+                  alt=""
+                  class="absolute inset-0 w-full h-full object-contain pointer-events-none"
+                />
+                <img
+                  src="asset/Tentang/ornamen_putih.png"
+                  alt=""
+                  class="absolute inset-0 w-[95%] h-full mx-auto object-contain pointer-events-none"
+                />
+
+                <div class="relative z-10 py-1 font-semibold">
+                  <span class="text-xs"> Dudung (Kapster) </span>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col items-center">
+              <!-- Foto -->
+              <img
+                src="asset/Tentang/TimKerja/2.png"
+                alt="Rais"
+                class="w-52 h-auto object-cover shadow-xl rounded-md"
+                style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+              />
+
+              <div class="relative mt-3 px-6 py-2 text-center text-white">
+                <img
+                  src="asset/Tentang/ornamen_putih.png"
+                  alt=""
+                  class="absolute inset-0 w-full h-full object-contain pointer-events-none"
+                />
+                <img
+                  src="asset/Tentang/ornamen_putih.png"
+                  alt=""
+                  class="absolute inset-0 w-[95%] h-full mx-auto object-contain pointer-events-none"
+                />
+
+                <div class="relative z-10 py-1 font-semibold">
+                  <span class="text-sm"> Rais (Kapster) </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <img
+            src="asset/Tentang/elemen_bawah.png"
+            class="absolute bottom-0 w-full"
+            alt=""
+          />
+        </section>
+
+        <!-- Footer -->
+      </div>
+      <div x-show="halaman === 'layanan'">
+        <section
+          class="relative md:h-screen h-[225px] flex items-center md:border-b-8 md:border-[#664204] justify-center"
+        >
+          <!-- Background Image -->
+          <img
+            src="asset/Layanan/HeroImage.png"
+            alt="Background"
+            class="absolute inset-0 w-full h-full object-cover"
+          />
+          <!-- <div class="absolute inset-0 bg-black bg-opacity-40"></div> -->
+          <nav
+            class="absolute top-0 left-0 z-20 w-full flex items-center justify-center px-4 md:px-8 text-white"
+          >
+            <a href="#" @click.prevent="halaman = 'beranda'">
+              <img
+                src="asset/logo/logo.png"
+                alt="Logo"
+                class="md:w-20 w-10 pt-4"
+              />
+            </a>
+
+            <div class="relative w-fit ml-4 md:ml-auto">
+              <img
+                src="asset/Beranda/ornamen_navbar.png"
+                alt="Ornamen Navbar"
+                class="w-full md:h-auto h-14 z-0"
+              />
+
+              <ul
+                class="absolute inset-0 flex z-10 justify-center items-center md:space-x-24 space-x-4 sm:space-x-4 text-[10px] md:text-base font-medium text-white"
+              >
+                <li>
+                  <a
+                    href="#"
+                    @click.prevent="halaman = 'beranda'"
+                    class="hover:text-[#B57D40]"
+                    >Beranda</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    @click.prevent="halaman = 'tentang'"
+                    class="hover:text-[#B57D40]"
+                    >Tentang</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    @click.prevent="halaman = 'layanan'"
+                    class="text-[#B57D40] hover:text-[#B57D40]"
+                    >Layanan Kami</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    @click.prevent="halaman = 'kontak'"
+                    class="hover:text-[#B57D40]"
+                    >Kontak</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </section>
+
+        <!-- Visi & Misi Section -->
+        <section id="layanan_kami" class="relative text-white">
+          <div class="relative">
+            <!-- Ornamen Kiri -->
+            <img
+              src="asset/Tentang/output-onlinegiftools.gif"
+              alt="Spiral Kiri"
+              class="absolute md:top-6 md:left-6 top-3 left-0 md:h-40 h-20"
+            />
+            <!-- Jasa Kami -->
+            <div
+              class="relative flex flex-row items-center justify-center px-20 md:pt-12 md:pb-6 pt-12 gap-x-6"
+            >
+              <div
+                class="relative justify-center items-center md:ms-10 text-center flex flex-col"
+              >
+                <span class="text-2xl md:text-3xl font-bold mb-4"
+                  >Jasa Kami</span
+                >
+                <div
+                  class="relative justify-center items-center text-center flex flex-col"
+                >
+                  <div
+                    class="flex justify-center items-center gap-x-6 md:gap-x-12"
+                  >
+                    <img
+                      src="asset/Layanan/TombolKiri.png"
+                      draggable="false"
+                      onclick="prevJasa()"
+                      class="w-10"
+                      alt=""
+                    />
+                    <img
+                      id="fotoJasa"
+                      src="asset/Layanan/JasaKami/FotoJasaKami/catrambut.png"
+                      class="w-64 transition-opacity duration-500"
+                      onclick="openModal(this.src)"
+                      alt=""
+                      style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+                    />
+                    <img
+                      src="asset/Layanan/TombolKanan.png"
+                      draggable="false"
+                      onclick="nextJasa()"
+                      class="w-10"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <img
+                  id="hargaJasa"
+                  src="asset/Layanan/JasaKami/HargaJasaKami/hargacatrambut.png"
+                  alt=""
+                  class="md:w-52 w-40 mt-4 transition-opacity duration-500"
+                  draggable="false"
+                />
+              </div>
+              <div
+                class="relative hidden md:block w-full max-w-xl mx-auto text-white min-h-[250px]"
+              >
+                <!-- SVG Background -->
+                <img
+                  src="asset/Layanan/ornamen_putih.png"
+                  alt="Ornamen Deskripsi"
+                  class="absolute inset-0 w-full h-full z-0"
+                />
+
+                <!-- Teks -->
+                <div
+                  class="absolute z-10 px-6 text-sm leading-relaxed flex items-center justify-center h-full"
+                >
+                  <p id="deskripsiJasa" class="text-center">
+                    Ubah gaya, tampil lebih segar! Pilihan warna trendy dan
+                    proses pengecatan profesional untuk hasil yang merata dan
+                    tahan lama.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Ornamen Mobile Screen -->
+            <div
+              class="relative md:hidden w-full max-w-xl mx-auto text-white min-h-[250px]"
+            >
+              <!-- SVG Background -->
+              <img
+                src="asset/Layanan/ornamen_putih.png"
+                alt="Ornamen Deskripsi"
+                class="absolute inset-0 w-full h-full z-0"
+              />
+
+              <!-- Teks -->
+              <div
+                class="absolute z-10 px-6 text-sm leading-relaxed flex items-center justify-center h-full"
+              >
+                <p id="deskripsiJasaMobile" class="text-center">
+                  Ubah gaya, tampil lebih segar! Pilihan warna trendy dan proses
+                  pengecatan profesional untuk hasil yang merata dan tahan lama.
+                </p>
+              </div>
+            </div>
+            <!-- Produk Kami -->
+            <div
+              class="relative flex flex-row items-center justify-center px-20 md:pt-0 md:pb-12 pt-10 gap-x-6"
+            >
+              <!-- Ornamen + teks -->
+              <div
+                class="relative hidden md:block w-full max-w-xl mx-auto text-white min-h-[250px]"
+              >
+                <img
+                  src="asset/Layanan/ornamen_putih.png"
+                  alt="Ornamen Deskripsi"
+                  class="absolute inset-0 w-full h-full z-0"
+                />
+
+                <div
+                  class="absolute z-10 px-12 text-sm leading-relaxed flex items-center justify-center h-full"
+                >
+                  <p id="deskripsiProduct" class="text-center">
+                    BSY Noni Black Hair Magic adalah sampo pewarna rambut instan
+                    yang terbuat dari ekstrak buah mengkudu (noni) dan bahan
+                    herbal pilihan. Membantu menghitamkan rambut secara cepat
+                    tanpa merusak, sekaligus menutrisi dan menjaga kesehatan
+                    kulit kepala. Praktis digunakan di rumah, tanpa perlu ke
+                    salon.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="relative justify-center items-center text-center flex flex-col"
+              >
+                <span class="text-2xl md:text-3xl font-bold mb-4"
+                  >Produk Kami</span
+                >
+                <div
+                  class="relative justify-center items-center text-center flex flex-col"
+                >
+                  <div
+                    class="flex justify-center items-center gap-x-6 md:gap-x-12"
+                  >
+                    <img
+                      onclick="prevProduct()"
+                      src="asset/Layanan/TombolKiri.png"
+                      draggable="false"
+                      class="w-10"
+                      alt=""
+                    />
+                    <img
+                      id="fotoProduct"
+                      src="asset/Layanan/ProdukKami/FotoProdukKami/BSY.png"
+                      class="w-64 transition-opacity duration-500"
+                      alt=""
+                      onclick="openModal(this.src)"
+                      style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+                    />
+                    <img
+                      onclick="nextProduct()"
+                      src="asset/Layanan/TombolKanan.png"
+                      draggable="false"
+                      class="w-10"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <img
+                  id="hargaProduct"
+                  src="asset/Layanan/ProdukKami/HargaProdukKami/BSY.png"
+                  alt=""
+                  class="md:w-52 w-40 mt-4 transition-opacity duration-500"
+                  draggable="false"
+                />
+              </div>
+            </div>
+            <!-- Ornamen Mobile Screen -->
+            <div
+              class="relative md:hidden w-full max-w-xl mx-auto text-white min-h-[300px]"
+            >
+              <!-- SVG Background -->
+              <img
+                src="asset/Layanan/ornamen_putih.png"
+                alt="Ornamen Deskripsi"
+                class="absolute inset-0 w-full h-full z-0"
+              />
+
+              <!-- Teks Mobile Screen -->
+              <div
+                class="absolute z-10 px-6 text-sm leading-relaxed flex items-center justify-center h-full"
+              >
+                <p id="deskripsiProductMobile" class="text-center">
+                  BSY Noni Black Hair Magic adalah sampo pewarna rambut instan
+                  yang terbuat dari ekstrak buah mengkudu (noni) dan bahan
+                  herbal pilihan. Membantu menghitamkan rambut secara cepat
+                  tanpa merusak, sekaligus menutrisi dan menjaga kesehatan kulit
+                  kepala. Praktis digunakan di rumah, tanpa perlu ke salon.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Galeri -->
+        <section
+          class="text-white flex flex-col justify-center items-center mt-4 mb-12"
+        >
+          <h1 class="text-center text-2xl md:text-3xl font-bold">Galeri</h1>
+
+          <div
+            class="grid md:grid-cols-3 grid-cols-2 gap-y-8 px-4 py-4 pb-8 w-full max-w-6xl"
+          >
+            <img
+              src="asset/Layanan/Galeri/galeri1.png"
+              alt=""
+              onclick="openModal(this.src)"
+              class="w-64 md:hidden h-auto object-cover shadow-xl rounded-md md:mr-12"
+              style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+            />
+            <img
+              src="asset/Layanan/Galeri/galeri4.png"
+              alt=""
+              onclick="openModal(this.src)"
+              class="w-64 md:hidden h-auto object-cover shadow-xl rounded-md"
+              style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+            />
+            <img
+              src="asset/Layanan/Galeri/galeri5.png"
+              alt=""
+              onclick="openModal(this.src)"
+              class="w-64 md:hidden h-auto object-cover shadow-xl rounded-md md:mx-auto"
+              style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+            />
+            <img
+              src="asset/Layanan/Galeri/galeri3.png"
+              alt=""
+              onclick="openModal(this.src)"
+              class="w-64 md:hidden h-auto object-cover shadow-xl rounded-md md:ml-12"
+              style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+            />
+            <img
+              src="asset/Layanan/Galeri/galeri2.png"
+              alt=""
+              onclick="openModal(this.src)"
+              class="w-64 md:hidden h-auto object-cover shadow-xl rounded-md"
+              style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+            />
+            <!-- Kiri -->
+            <div
+              class="md:flex hidden flex-row md:flex-col gap-y-20 items-end pr-6"
+            >
+              <img
+                src="asset/Layanan/Galeri/galeri1.png"
+                alt=""
+                onclick="openModal(this.src)"
+                class="w-64 h-auto object-cover shadow-xl rounded-md md:mr-12"
+                style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+              />
+              <img
+                src="asset/Layanan/Galeri/galeri4.png"
+                alt=""
+                onclick="openModal(this.src)"
+                class="w-64 h-auto object-cover shadow-xl rounded-md"
+                style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+              />
+            </div>
+
+            <!-- Tengah -->
+            <div class="md:flex hidden justify-center items-center">
+              <img
+                src="asset/Layanan/Galeri/galeri5.png"
+                alt=""
+                onclick="openModal(this.src)"
+                class="w-64 h-auto object-cover shadow-xl rounded-md md:mx-auto"
+                style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+              />
+            </div>
+
+            <!-- Kanan -->
+            <div class="md:flex hidden flex-col gap-y-20 items-start md:pl-6">
+              <img
+                src="asset/Layanan/Galeri/galeri3.png"
+                alt=""
+                onclick="openModal(this.src)"
+                class="w-64 h-auto object-cover shadow-xl rounded-md md:ml-12"
+                style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+              />
+              <img
+                src="asset/Layanan/Galeri/galeri2.png"
+                alt=""
+                onclick="openModal(this.src)"
+                class="w-64 h-auto object-cover shadow-xl rounded-md"
+                style="box-shadow: 20px 0 30px -5px rgba(0, 0, 0, 0.3)"
+              />
+            </div>
+          </div>
+        </section>
+
+        <!-- Footer -->
+
+        <script>
+          const jasaList = [
+            {
+              foto: "asset/Layanan/JasaKami/FotoJasaKami/catrambut.png",
+              harga: "asset/Layanan/JasaKami/HargaJasaKami/hargacatrambut.png",
+              deskripsi:
+                "Ubah gaya, tampil lebih segar! Pilihan warna trendy dan proses pengecatan profesional untuk hasil yang merata dan tahan lama.",
+            },
+            {
+              foto: "asset/Layanan/JasaKami/FotoJasaKami/cukurjenggot.png",
+              harga:
+                "asset/Layanan/JasaKami/HargaJasaKami/hargacukurjenggot.png",
+              deskripsi:
+                "Tampil rapi dan maskulin dengan potongan kumis dan jenggot yang presisi. Dirapikan dengan detail, memberikan bentuk yang sesuai dengan karakter wajah Anda.",
+            },
+            {
+              foto: "asset/Layanan/JasaKami/FotoJasaKami/pijat.png",
+              harga: "asset/Layanan/JasaKami/HargaJasaKami/hargapijat.png",
+              deskripsi:
+                "Lepaskan penat dengan pijatan lembut di area kepala dan leher. Membantu melancarkan peredaran darah dan membuat tubuh kembali segar.",
+            },
+            {
+              foto: "asset/Layanan/JasaKami/FotoJasaKami/nyamandipotong.png",
+              harga:
+                "asset/Layanan/JasaKami/HargaJasaKami/harganyamanpotong.png",
+              deskripsi:
+                "Nikmati pengalaman grooming lengkap: potong dan cukup rapi, handuk hangat yang menenangkan, keramas menyegarkan, hingga pijat ringan yang membuat rileks semua dirancang untuk kenyamanan maksimal dan tampilan terbaik Anda.",
+            },
+            {
+              foto: "asset/Layanan/JasaKami/FotoJasaKami/nyamandipotonglengkap.png",
+              harga: "asset/Layanan/JasaKami/HargaJasaKami/hargalengkap.png",
+              deskripsi:
+                "Dari potong dan cukur rambut, handuk hangat yang menenangkan, keramas menyegarkan, hingga pijat kepala & leher yang bikin rileks. Ditambah potong kumis dan jenggot untuk tampilan yang makin rapi dan maskulin. ",
+            },
+          ];
+
+          let currentIndex = 0;
+
+          function tampilkanJasa(index) {
+            const foto = document.getElementById("fotoJasa");
+            const harga = document.getElementById("hargaJasa");
+            const deskripsi = document.getElementById("deskripsiJasa");
+            const deskripsiJasaMobile = document.getElementById(
+              "deskripsiJasaMobile"
+            );
+
+            // Step 1: Fade out
+            foto.classList.add("opacity-0");
+            harga.classList.add("opacity-0");
+            deskripsi.classList.add("opacity-0");
+            deskripsiJasaMobile.classList.add("opacity-0");
+
+            // Step 2: Tunggu transisi lalu ganti konten
+            setTimeout(() => {
+              foto.src = jasaList[index].foto;
+              harga.src = jasaList[index].harga;
+              deskripsi.innerHTML = jasaList[index].deskripsi;
+              deskripsiJasaMobile.innerHTML = jasaList[index].deskripsi;
+
+              // Step 3: Fade in
+              foto.classList.remove("opacity-0");
+              harga.classList.remove("opacity-0");
+              deskripsi.classList.remove("opacity-0");
+              deskripsiJasaMobile.classList.remove("opacity-0");
+            }, 200); // Waktu delay lebih kecil dari `duration-500`
+          }
+
+          function nextJasa() {
+            currentIndex = (currentIndex + 1) % jasaList.length;
+            tampilkanJasa(currentIndex);
+          }
+
+          function prevJasa() {
+            currentIndex =
+              (currentIndex - 1 + jasaList.length) % jasaList.length;
+            tampilkanJasa(currentIndex);
+          }
+          const productList = [
+            {
+              foto: "asset/Layanan/ProdukKami/FotoProdukKami/BSY.png",
+              harga: "asset/Layanan/ProdukKami/HargaProdukKami/BSY.png",
+              deskripsi:
+                " BSY Noni Black Hair Magic adalah sampo pewarna rambut instan yang terbuat dari ekstrak buah mengkudu (noni) dan bahan herbal pilihan. Membantu menghitamkan rambut secara cepat tanpa merusak, sekaligus menutrisi dan menjaga kesehatan kulit kepala. Praktis digunakan di rumah, tanpa perlu ke salon.",
+            },
+            {
+              foto: "asset/Layanan/ProdukKami/FotoProdukKami/Cartelde.png",
+              harga: "asset/Layanan/ProdukKami/HargaProdukKami/Cartelde.png",
+              deskripsi:
+                " (Oil Based Pomade) <br>  Memiliki tekstur yang tidak terlalu lengket, memiliki daya tahan lama, mengandung vitamin E dan Olive Oil. Disarankan untuk rambut yang kering.",
+            },
+            {
+              foto: "asset/Layanan/ProdukKami/FotoProdukKami/ElMejor.png",
+              harga: "asset/Layanan/ProdukKami/HargaProdukKami/ElMejor.png",
+              deskripsi:
+                " (Claybased pomade) <br> membuat tekstur rambut lebih matte, bikin rambut bervolume dengan hold yang kuat, menyerap keringat.",
+            },
+            {
+              foto: "asset/Layanan/ProdukKami/FotoProdukKami/ElNuevo.png",
+              harga: "asset/Layanan/ProdukKami/HargaProdukKami/ElNuevo.png",
+              deskripsi:
+                " (Water Based Pomade) <br> Mudah dibilas, fleksibel untuk tampilan modern atau klasik, teksturnya tidak lengket, cocok dipakai sehari-hari, serta, mengandung Vitamin E.",
+            },
+            {
+              foto: "asset/Layanan/ProdukKami/FotoProdukKami/Nolabel.png",
+              harga: "asset/Layanan/ProdukKami/HargaProdukKami/Nolabel.png",
+              deskripsi:
+                " (Water Based) <br> Memiliki Tekstur lebih ringan sehingga mudah diaplikasikan pada rambut, dan mampu memberikan tampilan yang lebih alami tanpa terkesan berat atau berminyak.",
+            },
+          ];
+
+          let currentIndex2 = 0;
+
+          function tampilkanProduct(index) {
+            const foto = document.getElementById("fotoProduct");
+            const harga = document.getElementById("hargaProduct");
+            const deskripsi = document.getElementById("deskripsiProduct");
+            const deskripsiMobile = document.getElementById(
+              "deskripsiProductMobile"
+            );
+
+            // Step 1: Fade out
+            foto.classList.add("opacity-0");
+            harga.classList.add("opacity-0");
+            deskripsi.classList.add("opacity-0");
+            deskripsiMobile.classList.add("opacity-0");
+
+            // Step 2: Tunggu transisi lalu ganti konten
+            setTimeout(() => {
+              foto.src = productList[index].foto;
+              harga.src = productList[index].harga;
+              deskripsi.innerHTML = productList[index].deskripsi;
+              deskripsiMobile.innerHTML = productList[index].deskripsi;
+
+              // Step 3: Fade in
+              foto.classList.remove("opacity-0");
+              harga.classList.remove("opacity-0");
+              deskripsi.classList.remove("opacity-0");
+              deskripsiMobile.classList.remove("opacity-0");
+            }, 200); // Waktu delay lebih kecil dari `duration-500`
+          }
+
+          function nextProduct() {
+            currentIndex2 = (currentIndex2 + 1) % productList.length;
+            tampilkanProduct(currentIndex2);
+          }
+
+          function prevProduct() {
+            currentIndex2 =
+              (currentIndex2 - 1 + productList.length) % productList.length;
+            tampilkanProduct(currentIndex2);
+          }
+        </script>
+        <script>
+          function openModal(src) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+
+            modalImg.src = src;
+            modal.classList.remove("hidden");
+
+            // Pakai timeout agar animasi bisa jalan
+            setTimeout(() => {
+              modalImg.classList.remove("scale-90", "opacity-0");
+              modalImg.classList.add("scale-100", "opacity-100");
+            }, 10);
+
+            // Matikan scroll body
+            document.body.style.overflow = "hidden";
+          }
+
+          function closeModal() {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+
+            // Balik ke animasi awal
+            modalImg.classList.remove("scale-100", "opacity-100");
+            modalImg.classList.add("scale-90", "opacity-0");
+
+            // Tunggu animasi selesai baru sembunyikan modal
+            setTimeout(() => {
+              modal.classList.add("hidden");
+              document.body.style.overflow = ""; // Aktifkan scroll lagi
+            }, 300);
+          }
+        </script>
+      </div>
+      <div x-show="halaman === 'kontak'">
+        <section
+          class="relative md:h-screen h-[225px] flex items-center justify-center"
+        >
+          <!-- Background Image -->
+          <img
+            src="asset/Kontak/HeroImage.png"
+            alt="Background"
+            class="absolute inset-0 w-full h-full object-cover"
+          />
+          <!-- <div class="absolute inset-0 bg-black bg-opacity-40"></div> -->
+          <nav
+            class="absolute top-0 left-0 z-20 w-full flex items-center justify-center px-4 md:px-8 text-white"
+          >
+            <img
+              src="asset/logo/logo.png"
+              alt="Logo"
+              class="md:w-20 w-10 pt-4"
+            />
+
+            <div class="relative w-fit ml-4 md:ml-auto">
+              <img
+                src="asset/Beranda/ornamen_navbar.png"
+                alt="Ornamen Navbar"
+                class="w-full md:h-auto h-14 z-0"
+              />
+
+              <ul
+                class="absolute inset-0 flex z-10 justify-center items-center md:space-x-24 space-x-4 sm:space-x-4 text-[10px] md:text-base font-medium text-white"
+              >
+                <li>
+                  <a
+                    href="#"
+                    @click.prevent="halaman = 'beranda'"
+                    class="hover:text-[#B57D40]"
+                    >Beranda</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    @click.prevent="halaman = 'tentang'"
+                    class="hover:text-[#B57D40]"
+                    >Tentang</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    @click.prevent="halaman = 'layanan'"
+                    class="hover:text-[#B57D40]"
+                    >Layanan Kami</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    @click.prevent="halaman = 'kontak'"
+                    class="text-[#B57D40] hover:text-[#B57D40]"
+                    >Kontak</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </section>
+
+        <!-- Visi & Misi Section -->
+        <section id="layanan_kami" class="relative text-white">
+          <div class="relative">
+            <!-- Ornamen Kiri -->
+            <img
+              src="asset/Tentang/output-onlinegiftools.gif"
+              alt="Spiral Kiri"
+              class="absolute top-6 left-0 md:h-40 h-20"
+            />
+            <div class="relative md:px-32 px-4 pt-28">
+              <h1 class="text-3xl font-bold mb-6 text-center">Peta</h1>
+              <div class="">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.69529843506!2d107.6634101!3d-6.9269780999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e900110fdc35%3A0x9483293659e08d01!2sNyaman%20dipotong!5e0!3m2!1sid!2sid!4v1753085788349!5m2!1sid!2sid"
+                  width="100%"
+                  height="400"
+                  class="md:border-[12px] border-[10px] border-[#674304]"
+                  style="border-radius: 40px"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="text-white relative md:px-40 px-4 py-12">
+          <h1 class="text-3xl font-medium mb-6 text-center py-4">
+            Hubungi Kami
+          </h1>
+          <div
+            class="flex flex-col md:flex-row items-start md:gap-x-20 items-start justify-between mt-4"
+          >
+            <div
+              class="flex flex-col md:hidden items-start justify-center py-4 text-[12px]"
+            >
+              <h2 class="text-xl font-semibold mb-2">Jadwal Buka - Tutup</h2>
+              <ul class="text-left space-y-1 font-mono">
+                <li>
+                  <span class="inline-block w-20">MINGGU</span>: 10.00 - 21.00
+                </li>
+                <li>
+                  <span class="inline-block w-20">SENIN</span>: 10.00 - 21.00
+                </li>
+                <li>
+                  <span class="inline-block w-20">SELASA</span>: 10.00 - 21.00
+                </li>
+                <li>
+                  <span class="inline-block w-20">RABU</span>: 10.00 - 21.00
+                </li>
+                <li>
+                  <span class="inline-block w-20">KAMIS</span>: 10.00 - 21.00
+                </li>
+                <li>
+                  <span class="inline-block w-20">JUMAT</span>: 10.00 - 21.00
+                </li>
+                <li>
+                  <span class="inline-block w-20">SABTU</span>: 10.00 - 21.00
+                </li>
+              </ul>
+            </div>
+            <!-- Kolom Alamat dan Kontak -->
+            <div class="mb-6 flex flex-col items-start md:max-w-sm">
+              <div>
+                <h2 class="text-xl md:text-3xl font-semibold mb-2">Alamat</h2>
+                <p class="text-[12px] md:text-lg md:break-words">
+                  Jl. Pratista Raya No. 73, Antapani Kidul, Kec. Antapani, Kota
+                  Bandung, Jawa Barat 40291
+                </p>
+              </div>
+              <div class="mt-6">
+                <h2 class="text-xl md:text-3xl font-semibold mb-2">Kontak</h2>
+                <p class="flex flex-col space-y-2">
+                  <span class="flex items-center gap-x-2 text-[12px] md:text-lg"
+                    ><img src="asset/Icon/wa.png" alt="" class="w-6" />
+                    0852-5902-9299</span
+                  >
+                  <span class="flex items-center gap-x-2 text-[12px] md:text-lg"
+                    ><img
+                      src="asset/Icon/ig.png"
+                      alt=""
+                      class="w-6"
+                    />@nyamandipotong</span
+                  >
+                </p>
+              </div>
+            </div>
+
+            <!-- Kolom Jadwal -->
+            <div
+              class="hidden md:flex flex-col items-center md:me-10 justify-center"
+            >
+              <h2 class="text-3xl font-semibold mb-2">Jadwal Buka - Tutup</h2>
+              <ul class="text-base md:text-lg text-left space-y-1 font-mono">
+                <li class="mt-2">
+                  <span class="inline-block uppercase w-24">MINGGU</span>
+                  <span> :</span>
+                  <span class="inline-block uppercase ml-6">
+                    10.00 - 21.00</span
+                  >
+                </li>
+                <li>
+                  <span class="inline-block uppercase w-24">Senin</span>
+                  <span> :</span>
+                  <span class="inline-block uppercase ml-6">
+                    10.00 - 21.00</span
+                  >
+                </li>
+                <li>
+                  <span class="inline-block uppercase w-24">Selasa</span>
+                  <span> :</span>
+                  <span class="inline-block uppercase ml-6">
+                    10.00 - 21.00</span
+                  >
+                </li>
+                <li>
+                  <span class="inline-block uppercase w-24">Rabu</span>
+                  <span> :</span>
+                  <span class="inline-block uppercase ml-6">
+                    10.00 - 21.00</span
+                  >
+                </li>
+                <li>
+                  <span class="inline-block uppercase w-24">Kamis</span>
+                  <span> :</span>
+                  <span class="inline-block uppercase ml-6">
+                    10.00 - 21.00</span
+                  >
+                </li>
+                <li>
+                  <span class="inline-block uppercase w-24">Jumat</span>
+                  <span> :</span>
+                  <span class="inline-block uppercase ml-6">
+                    10.00 - 21.00</span
+                  >
+                </li>
+                <li>
+                  <span class="inline-block uppercase w-24">Sabtu</span>
+                  <span> :</span>
+                  <span class="inline-block uppercase ml-6">
+                    10.00 - 21.00</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Footer -->
+      </div>
+    </main>
+
+    <footer
+      style="
+        background-image: url(asset/footer.png);
+        background-repeat: no-repeat;
+        object-fit: cover;
+        background-size: 100% 100%;
+      "
+      class="text-white py-2 relative"
+    >
+      <div
+        class="absolute md:top-0 md:left-0 flex flex-col px-3 md:py-2 py-1 justify-center items-start"
+      >
+        <h1 class="font-semibold text-sm md:text-lg">Mari Terhubung</h1>
+        <div class="flex space-x-3 mt-2">
+          <a href="https://wa.me/6285259029299">
+            <img
+              src="asset/Icon/wa.png"
+              class="w-6 md:w-12 hover:scale-105 transition-transform duration-300"
+              alt="Whatsapp"
+              draggable="false"
+            />
+          </a>
+          <a href="https://www.instagram.com/nyamandipotong">
+            <img
+              src="asset/Icon/ig.png"
+              class="w-6 md:w-12 hover:scale-105 transition-transform duration-300"
+              alt="Instagram"
+              draggable="false"
+            />
+          </a>
+        </div>
+      </div>
+
+      <!-- Tengah -->
+      <div class="justify-center flex mt-3 mb-6 md:my-0">
+        <a href="index.html">
+          <img
+            src="asset/logo/logo_footer.png"
+            class="w-14 md:w-32"
+            alt="Logo Tengah"
+            draggable="false"
+          />
+        </a>
+      </div>
+
+      <!-- Kanan -->
+      <div
+        class="absolute right-0 bottom-0 flex px-3 mt-2 py-2 flex-col text-right text-[8px] md:text-sm"
+      >
+        <p>Â© Copyright 2025. All rights reserved.</p>
+        <p class="mt-1">Designed by Hatim</p>
+      </div>
+    </footer>
+    <script>
+      const audio = document.getElementById("lagu");
+      const judul = document.getElementById("judulLagu");
+      const playme = document.getElementById("playme");
+      const gambar = document.getElementById("gambarPiring");
+      const text = "LouisAdrien - At the Bistro";
+      let isPlaying = false;
+      let typingInterval;
+
+      function toggleLagu() {
+        if (isPlaying) {
+          audio.pause();
+        } else {
+          audio.play();
+        }
+      }
+
+      audio.onplaying = () => {
+        isPlaying = true;
+        judul.textContent = "";
+        playme.classList.add("hidden");
+        gambar.src = "asset/piring-hitam.gif";
+        typePerChar(text, 100);
+        // update alpine state
+        document.querySelector("body").__x.$data.isPlaying = true;
+      };
+
+      audio.onpause = () => {
+        isPlaying = false;
+        judul.textContent = "";
+        playme.classList.remove("hidden");
+        gambar.src = "asset/piring-hitam.png";
+        clearInterval(typingInterval);
+        // update alpine state
+        document.querySelector("body").__x.$data.isPlaying = false;
+      };
+
+      function typePerChar(sentence, delay) {
+        let index = 0;
+        typingInterval = setInterval(() => {
+          if (index < sentence.length) {
+            judul.textContent += sentence.charAt(index);
+            index++;
+          } else {
+            clearInterval(typingInterval);
+          }
+        }, delay);
+      }
+    </script>
+  </body>
+</html>
+<div
+  id="imageModal"
+  class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden"
+  onclick="closeModal()"
+>
+  <img
+    id="modalImage"
+    src=""
+    class="max-w-full max-h-full object-contain rounded-lg shadow-lg transform scale-90 opacity-0 transition duration-300"
+  />
+</div>
